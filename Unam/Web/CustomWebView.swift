@@ -57,14 +57,11 @@ struct SwiftUIWebView: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<SwiftUIWebView>) -> WKWebView {
         self.webView.navigationDelegate = context.coordinator
-        
-        
-        
+    
         if let url = URL(string: "https://www.dgae-siae.unam.mx/www_gate.php") {
             self.webView.load(URLRequest(url: url))
         }
-        
-        
+    
         return self.webView
     }
     
@@ -93,7 +90,8 @@ struct SwiftUIWebView: UIViewRepresentable {
                     //   print(record.displayName)
                     if record.displayName.contains(cookieName) {
                         dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: [record], completionHandler: {
-                            print("Deleted: " + record.displayName);
+                            print("Deleted: " + record.displayName)
+                          
                         })
                     }
                 }
@@ -103,19 +101,30 @@ struct SwiftUIWebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             
         }
-        
+        var allHeaderFields: [String : String] = [:]
         func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
             if let response = navigationResponse.response as? HTTPURLResponse {
                 let headers = response.allHeaderFields
-                print(headers)
+                //if let headerFields = headers as? [AnyHashable : String] {
+                  //  allHeaderFields = headerFields
+                //}
+//                for header in headers.enumerated() {
+//                    print(header)
+//                    if let key = header.element.value as? String, let value = headers[key] as? String {
+//                        allHeaderFields[key] = value
+//                    }
+//                    //allHeaderFields
+//                }
+//
+//                print(allHeaderFields)
                 
                 if !self.load2 && self.htmlContains {
                     self.load2 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        let url = URL(string: "https://www.dgae-siae.unam.mx/www_try.php?cta=" + userId + "&llave=110%2C1194%2CL%2CE%2C11%2CP%2C202%2C68%2C11%2CFACULTAD+DE+INGENIERIA&acc=hsa")!
-                        webView.load(URLRequest(url: url))
-                        
-                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        let url = URL(string: "https://www.dgae-siae.unam.mx/www_try.php?cta=" + userId + "&llave=110%2C1194%2CL%2CE%2C11%2CP%2C202%2C68%2C11%2CFACULTAD+DE+INGENIERIA&acc=hsa")!
+//                        webView.load(URLRequest(url: url))
+//
+//                    }
                 }
             }
             decisionHandler(.allow)
@@ -127,9 +136,51 @@ struct SwiftUIWebView: UIViewRepresentable {
                                         
                                         if let mainHtml = html as? String, let doc = try? HTML(html: mainHtml, encoding: .utf8) {
                                             print(mainHtml)
-                                            let account = doc.css("input[name='cta']")
-                                            print("account12345")
-                                            print(account)
+                                            //let account = doc.css("input[name='cta']")
+                                            //print("account12345")
+                                            //print(account)
+                                            let frames = doc.css("frame")
+                                            for frame in frames {
+                                               
+                                                guard let src = frame["src"] else { return }
+                                                
+//                                                var session = URLSession.shared
+//                                                if  let cookies =  URLSession.shared.configuration.httpCookieStorage?.cookies {
+//                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
+//                                                }
+//
+//                                                let dataStore = WKWebsiteDataStore.default()
+//                                                dataStore.httpCookieStore.getAllCookies { (cookies) in
+//
+//                                                    print(src)
+//                                                    let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
+//                                                    print(url)
+//                                                    var request = URLRequest(url: url)
+//
+//                                                    //request.httpShouldHandleCookies = true
+//                                                    self.allHeaderFields["Upgrade-Insecure-Requests"] = "1"
+//                                                    request.allHTTPHeaderFields = self.allHeaderFields
+//
+//                                                    print(cookies)
+//                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
+//                                                    let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
+//                                                        guard let data = data else { return }
+//                                                        let html = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+//
+//
+//                                                        print(html)
+//
+//                                                    }
+//
+//                                                    task.resume()
+//                                                }
+                                                
+                                                let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
+                                                let webview2 = CustomWebview(frame: .zero)
+                                                webview2.load(URLRequest(url: url))
+                                                
+                                                
+                                            }
                                         }
                                         
                                         if !self.htmlContains {
@@ -213,18 +264,6 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                         self.networkManager.subjectSections = sections
                                                     }
                                                 }
-                                                
-                                                //                                            // Search for nodes by CSS
-                                                //                                            for link in doc.css("a, link") {
-                                                //                                                print(link.text)
-                                                //                                                print(link["href"])
-                                                //                                            }
-                                                //
-                                                //                                            // Search for nodes by XPath
-                                                //                                            for link in doc.xpath("//a | //link") {
-                                                //                                                print(link.text)
-                                                //                                                print(link["href"])
-                                                //                                            }
                                             }
                                         }
                                         

@@ -414,3 +414,6 @@ https://medium.com/swlh/swiftui-create-list-tableview-f3b5499523cf
         print(message)
     }
 }
+
+https://dev.to/kevinmaarek/working-with-your-uiviewcontroller-and-swiftui-2917
+https://www.vadimbulavin.com/using-uikit-uiviewcontroller-and-uiview-in-swiftui/
