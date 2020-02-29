@@ -14,7 +14,7 @@ struct SubjectDetailView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: Constant.Measurement.base2x) {
                     HStack(alignment: .top) {
                         Text("Clave Plantel")
                             .font(.subheadline)
@@ -58,8 +58,8 @@ struct SubjectDetailView: View {
                             .font(.subheadline)
                     }
                 }
-                
-                VStack(alignment: .leading, spacing: 16) {
+        
+                VStack(alignment: .leading, spacing: Constant.Measurement.base2x) {
                     HStack(alignment: .top) {
                         Text("Folio Acta")
                             .font(.subheadline)
@@ -88,8 +88,8 @@ struct SubjectDetailView: View {
                         Text(subject.ext ?? "-")
                             .font(.subheadline)
                     }
-                }
-            }.padding()
+                }.padding(.top, Constant.Measurement.base3x)
+            }.padding(Constant.Measurement.base)
             Spacer()
         }.navigationBarTitle(subject.name ?? "")
     }

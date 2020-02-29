@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Constant {
     enum Web {
@@ -19,5 +20,11 @@ enum Constant {
     
     enum SubjectDetail {
         static let title = "Historial Academico"
+    }
+    
+    enum Measurement {
+        static let base: CGFloat = 8
+        static let base2x = base * 2
+        static let base3x = base * 3
     }
 }

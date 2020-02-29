@@ -15,10 +15,17 @@ struct SubjectRow: View {
             VStack(alignment: .leading) {
                 Text(subject.name ?? "")
             }
-            VStack(alignment: .leading) {
+            Spacer()
+            VStack(alignment: .trailing) {
                Text(subject.qualification ?? "")
             }
-            Spacer()
-        }
+            
+        }.padding(Constant.Measurement.base)
+    }
+}
+
+struct SubjectRow_Previews: PreviewProvider {
+    static var previews: some View {
+        SubjectRow(subject: Subject(id: 1, qualification: "qualification", name: "name"))
     }
 }

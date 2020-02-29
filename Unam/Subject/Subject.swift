@@ -29,7 +29,4 @@ struct SubjectSection: Identifiable {
     var title: String?
     var results: [Subject]
 }
-//
-//struct SubjectList {
-//    var results: [Subject]
-//}
+
