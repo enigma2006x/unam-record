@@ -15,7 +15,7 @@ enum Constant {
     }
     
     enum Subject {
-        static let title = "Historial Academico"
+        static let title = "UNAM"
     }
     
     enum SubjectDetail {

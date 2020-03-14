@@ -417,3 +417,13 @@ https://medium.com/swlh/swiftui-create-list-tableview-f3b5499523cf
 
 https://dev.to/kevinmaarek/working-with-your-uiviewcontroller-and-swiftui-2917
 https://www.vadimbulavin.com/using-uikit-uiviewcontroller-and-uiview-in-swiftui/
+
+ <!-- frames -->
+  </head>
+  <frameset id="TopFrame" rows="120,*" framespacing="0" frameborder="0">
+      <frame src="frm_cpan_top.html" name="top" id="top" frameborder="0" scrolling="No" noresize="" marginwidth="0" marginheight="0">
+      <frameset id="MiddleFrame" cols="160,*" framespacing="0" frameborder="0">
+          <frame src="frm_cpan_mnu.html" name="mnu" id="mnu" frameborder="0" scrolling="No" noresize="" marginwidth="0" marginheight="0">
+          <frame src="frm_cpan_bdy.html" name="bdy" id="bdy" frameborder="0" scrolling="Auto" noresize="" marginwidth="0" marginheight="0">
+      </frameset>
+  </frameset>

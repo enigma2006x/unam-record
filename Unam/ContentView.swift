@@ -22,6 +22,7 @@ class WebViewModel: ObservableObject {
 class NetworkManager: ObservableObject {
     //var didChange = PassthroughSubject<NetworkManager, Never>()
     @Published var subjectSections: [SubjectSection] = []
+    @Published var showSubjectList: Bool = false
 }
 
 var cookieName = "unam"

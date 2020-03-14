@@ -15,19 +15,6 @@
 		832DCDEF24018C650017B3F9 /* SubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDEE24018C650017B3F9 /* SubjectListView.swift */; };
 		832DCDF22401A7A10017B3F9 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDF12401A7A10017B3F9 /* CustomWebView.swift */; };
 		832DCDF42401A8A50017B3F9 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDF32401A8A50017B3F9 /* String+.swift */; };
-		83D3273B240A01BB0046D956 /* PeriscopeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D3272E240A01BB0046D956 /* PeriscopeCell.xib */; };
-		83D3273C240A01BB0046D956 /* YoutubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D3272F240A01BB0046D956 /* YoutubeCell.xib */; };
-		83D3273D240A01BB0046D956 /* SpotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D32730240A01BB0046D956 /* SpotifyCell.xib */; };
-		83D3273E240A01BB0046D956 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32731240A01BB0046D956 /* Spotify.swift */; };
-		83D3273F240A01BB0046D956 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32732240A01BB0046D956 /* Youtube.swift */; };
-		83D32740240A01BB0046D956 /* ActionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32733240A01BB0046D956 /* ActionData.swift */; };
-		83D32741240A01BB0046D956 /* TwitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D32734240A01BB0046D956 /* TwitterCell.xib */; };
-		83D32742240A01BB0046D956 /* Periscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32735240A01BB0046D956 /* Periscope.swift */; };
-		83D32743240A01BB0046D956 /* SkypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D32736240A01BB0046D956 /* SkypeCell.xib */; };
-		83D32744240A01BB0046D956 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32737240A01BB0046D956 /* Twitter.swift */; };
-		83D32745240A01BB0046D956 /* Tweetbot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D32738240A01BB0046D956 /* Tweetbot.swift */; };
-		83D32746240A01BB0046D956 /* TweetbotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D32739240A01BB0046D956 /* TweetbotCell.xib */; };
-		83D32747240A01BB0046D956 /* Skype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3273A240A01BB0046D956 /* Skype.swift */; };
 		83EF5D5F23FC876200BAD81D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF5D5E23FC876200BAD81D /* AppDelegate.swift */; };
 		83EF5D6123FC876200BAD81D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF5D6023FC876200BAD81D /* SceneDelegate.swift */; };
 		83EF5D6623FC876200BAD81D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EF5D6423FC876200BAD81D /* Main.storyboard */; };
@@ -46,19 +33,6 @@
 		832DCDEE24018C650017B3F9 /* SubjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListView.swift; sourceTree = "<group>"; };
 		832DCDF12401A7A10017B3F9 /* CustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
 		832DCDF32401A8A50017B3F9 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		83D3272E240A01BB0046D956 /* PeriscopeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriscopeCell.xib; sourceTree = "<group>"; };
-		83D3272F240A01BB0046D956 /* YoutubeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YoutubeCell.xib; sourceTree = "<group>"; };
-		83D32730240A01BB0046D956 /* SpotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotifyCell.xib; sourceTree = "<group>"; };
-		83D32731240A01BB0046D956 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
-		83D32732240A01BB0046D956 /* Youtube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
-		83D32733240A01BB0046D956 /* ActionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionData.swift; sourceTree = "<group>"; };
-		83D32734240A01BB0046D956 /* TwitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterCell.xib; sourceTree = "<group>"; };
-		83D32735240A01BB0046D956 /* Periscope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Periscope.swift; sourceTree = "<group>"; };
-		83D32736240A01BB0046D956 /* SkypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkypeCell.xib; sourceTree = "<group>"; };
-		83D32737240A01BB0046D956 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twitter.swift; sourceTree = "<group>"; };
-		83D32738240A01BB0046D956 /* Tweetbot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweetbot.swift; sourceTree = "<group>"; };
-		83D32739240A01BB0046D956 /* TweetbotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetbotCell.xib; sourceTree = "<group>"; };
-		83D3273A240A01BB0046D956 /* Skype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skype.swift; sourceTree = "<group>"; };
 		83EF5D5B23FC876200BAD81D /* Unam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EF5D5E23FC876200BAD81D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83EF5D6023FC876200BAD81D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,27 +101,6 @@
 			path = Web;
 			sourceTree = "<group>";
 		};
-		83D3272D240A01BB0046D956 /* CustomActionControllers */ = {
-			isa = PBXGroup;
-			children = (
-				83D3272E240A01BB0046D956 /* PeriscopeCell.xib */,
-				83D3272F240A01BB0046D956 /* YoutubeCell.xib */,
-				83D32730240A01BB0046D956 /* SpotifyCell.xib */,
-				83D32731240A01BB0046D956 /* Spotify.swift */,
-				83D32732240A01BB0046D956 /* Youtube.swift */,
-				83D32733240A01BB0046D956 /* ActionData.swift */,
-				83D32734240A01BB0046D956 /* TwitterCell.xib */,
-				83D32735240A01BB0046D956 /* Periscope.swift */,
-				83D32736240A01BB0046D956 /* SkypeCell.xib */,
-				83D32737240A01BB0046D956 /* Twitter.swift */,
-				83D32738240A01BB0046D956 /* Tweetbot.swift */,
-				83D32739240A01BB0046D956 /* TweetbotCell.xib */,
-				83D3273A240A01BB0046D956 /* Skype.swift */,
-			);
-			name = CustomActionControllers;
-			path = "../../../../../Downloads/XLActionController-master/Example/CustomActionControllers";
-			sourceTree = "<group>";
-		};
 		83EF5D5223FC876200BAD81D = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +122,6 @@
 		83EF5D5D23FC876200BAD81D /* Unam */ = {
 			isa = PBXGroup;
 			children = (
-				83D3272D240A01BB0046D956 /* CustomActionControllers */,
 				832DCDF024018CA40017B3F9 /* Web */,
 				832DCDE924018B280017B3F9 /* Util */,
 				832DCDE824018B190017B3F9 /* Subject */,
@@ -244,15 +196,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83D3273B240A01BB0046D956 /* PeriscopeCell.xib in Resources */,
 				83EF5D6B23FC876300BAD81D /* LaunchScreen.storyboard in Resources */,
-				83D32743240A01BB0046D956 /* SkypeCell.xib in Resources */,
-				83D3273D240A01BB0046D956 /* SpotifyCell.xib in Resources */,
-				83D3273C240A01BB0046D956 /* YoutubeCell.xib in Resources */,
-				83D32746240A01BB0046D956 /* TweetbotCell.xib in Resources */,
 				83EF5D6823FC876300BAD81D /* Assets.xcassets in Resources */,
 				83EF5D6623FC876200BAD81D /* Main.storyboard in Resources */,
-				83D32741240A01BB0046D956 /* TwitterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,18 +256,11 @@
 				832DCDF42401A8A50017B3F9 /* String+.swift in Sources */,
 				832DCDEF24018C650017B3F9 /* SubjectListView.swift in Sources */,
 				832DCDE724018AE80017B3F9 /* Constant.swift in Sources */,
-				83D32747240A01BB0046D956 /* Skype.swift in Sources */,
 				832DCDEB24018B360017B3F9 /* SubjectRow.swift in Sources */,
 				83F6F99023FDFD460094F7FF /* ContentView.swift in Sources */,
-				83D32745240A01BB0046D956 /* Tweetbot.swift in Sources */,
-				83D32744240A01BB0046D956 /* Twitter.swift in Sources */,
 				83EF5D5F23FC876200BAD81D /* AppDelegate.swift in Sources */,
 				83EF5D6123FC876200BAD81D /* SceneDelegate.swift in Sources */,
-				83D3273F240A01BB0046D956 /* Youtube.swift in Sources */,
-				83D32742240A01BB0046D956 /* Periscope.swift in Sources */,
-				83D3273E240A01BB0046D956 /* Spotify.swift in Sources */,
 				832DCDF22401A7A10017B3F9 /* CustomWebView.swift in Sources */,
-				83D32740240A01BB0046D956 /* ActionData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,16 +1,22 @@
 PODS:
   - Kanna (5.0.0)
+  - XLActionController (5.0.2):
+    - XLActionController/Core (= 5.0.2)
+  - XLActionController/Core (5.0.2)
 
 DEPENDENCIES:
   - Kanna (~> 5.0.0)
+  - XLActionController
 
 SPEC REPOS:
   trunk:
     - Kanna
+    - XLActionController
 
 SPEC CHECKSUMS:
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
+  XLActionController: f1f2226d2c6629db197d4a41f2da907085a4cb9d
 
-PODFILE CHECKSUM: 97625c2fc0e908a7e0c4b004d4a18190c6cfd675
+PODFILE CHECKSUM: 18101355e74403b55d1b47e6bf3f8debe2f7d447
 
 COCOAPODS: 1.9.0.beta.2

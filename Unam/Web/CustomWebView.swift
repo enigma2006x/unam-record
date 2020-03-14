@@ -10,6 +10,46 @@ import SwiftUI
 import WebKit
 import Kanna
 
+//let group = DispatchGroup()          //create a group for a bunch of tasks we are about to do
+//   for i in 0...3 {                     //launch a bunch of tasks (eg a bunch of webservice calls that all need to be finished before proceeding to the next ViewController)
+//       group.enter()                    //let the group know that something is being added
+//       DispatchQueue.global().async {   //run tasks on a background thread
+//           sleep(arc4random() % 4)      //do some long task eg webservice or database lookup (here we are just sleeping for a random amount of time for demonstration purposes)
+//           print("long task \(i) done!")
+//           group.leave()                //let group know that the task is finished
+//       }
+//   }
+//   group.wait()                         //will block whatever thread we are on here until all the above tasks have finished (so maybe dont use this function on your main thread)
+//   print("all tasks done!")
+class CallbackWebView: WKWebView, WKNavigationDelegate {
+    
+    var finish: ((Bool) -> Void)?
+    
+    override init(frame: CGRect, configuration: WKWebViewConfiguration?) {
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100), configuration: configuration ?? WKWebViewConfiguration())
+        
+        // UIApplication.shared.windows.first?.addSubview(self)
+        //        self.navigationDelegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        self.evaluateJavaScript("document.documentElement.outerHTML.toString()",
+                                completionHandler: { (html: Any?, error: Error?) in
+                                    
+                                    if let mainHtml = html as? String, let doc = try? HTML(html: mainHtml, encoding: .utf8) {
+                                        print(self.url)
+                                        print(mainHtml)
+                                        self.finish?(true)
+                                    }
+        })
+    }
+}
+
 final class CustomWebview: WKWebView, WKScriptMessageHandler {
     
     func addResponse(contentController: WKUserContentController) {
@@ -30,13 +70,12 @@ struct SwiftUIWebView: UIViewRepresentable {
     @ObservedObject var viewModel: WebViewModel
     @ObservedObject var networkManager: NetworkManager
     
-    let webView: CustomWebview =  {
+    let webView: CallbackWebView =  {
         let contentController = WKUserContentController()
         
         let scriptSource = """
             $(document).ready(function() {
               $( "form" ).submit(function( event ) {
-                document.body.style.backgroundColor = `red`;
                 var value = $("input[name=usr_logi]").val();
                 window.webkit.messageHandlers.nativeCallbackHandler.postMessage(value);
                // event.preventDefault();
@@ -50,18 +89,18 @@ struct SwiftUIWebView: UIViewRepresentable {
         let config = WKWebViewConfiguration()
         config.userContentController = contentController
         //webView.configuration = config
-        let webview = CustomWebview(frame: .zero, configuration: config)
-        webview.addResponse(contentController: contentController)
+        let webview = CallbackWebView(frame: .zero, configuration: config)
+        //      webview.addResponse(contentController: contentController)
         return webview
     }()
     
     func makeUIView(context: UIViewRepresentableContext<SwiftUIWebView>) -> WKWebView {
         self.webView.navigationDelegate = context.coordinator
-    
+        
         if let url = URL(string: "https://www.dgae-siae.unam.mx/www_gate.php") {
             self.webView.load(URLRequest(url: url))
         }
-    
+        
         return self.webView
     }
     
@@ -91,7 +130,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                     if record.displayName.contains(cookieName) {
                         dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: [record], completionHandler: {
                             print("Deleted: " + record.displayName)
-                          
+                            
                         })
                     }
                 }
@@ -101,30 +140,35 @@ struct SwiftUIWebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             
         }
+        
         var allHeaderFields: [String : String] = [:]
+        let group = DispatchGroup()
+        let semaphore = DispatchSemaphore(value: 0)
         func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+            
             if let response = navigationResponse.response as? HTTPURLResponse {
-                let headers = response.allHeaderFields
+                //let headers = response.allHeaderFields
                 //if let headerFields = headers as? [AnyHashable : String] {
-                  //  allHeaderFields = headerFields
+                //  allHeaderFields = headerFields
                 //}
-//                for header in headers.enumerated() {
-//                    print(header)
-//                    if let key = header.element.value as? String, let value = headers[key] as? String {
-//                        allHeaderFields[key] = value
-//                    }
-//                    //allHeaderFields
-//                }
-//
-//                print(allHeaderFields)
+                //                for header in headers.enumerated() {
+                //                    print(header)
+                //                    if let key = header.element.value as? String, let value = headers[key] as? String {
+                //                        allHeaderFields[key] = value
+                //                    }
+                //                    //allHeaderFields
+                //                }
+                //
+                //                print(allHeaderFields)
                 
                 if !self.load2 && self.htmlContains {
+                    webView.alpha = 0
                     self.load2 = true
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                        let url = URL(string: "https://www.dgae-siae.unam.mx/www_try.php?cta=" + userId + "&llave=110%2C1194%2CL%2CE%2C11%2CP%2C202%2C68%2C11%2CFACULTAD+DE+INGENIERIA&acc=hsa")!
-//                        webView.load(URLRequest(url: url))
-//
-//                    }
+                    // DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    let url = URL(string: "https://www.dgae-siae.unam.mx/www_try.php?cta=" + userId + "&llave=110%2C1194%2CL%2CE%2C11%2CP%2C202%2C68%2C11%2CFACULTAD+DE+INGENIERIA&acc=hsa")!
+                    webView.load(URLRequest(url: url))
+                    
+                    //  }
                 }
             }
             decisionHandler(.allow)
@@ -140,47 +184,71 @@ struct SwiftUIWebView: UIViewRepresentable {
                                             //print("account12345")
                                             //print(account)
                                             let frames = doc.css("frame")
+                                            var wait = 5
                                             for frame in frames {
-                                               
+                                                
                                                 guard let src = frame["src"] else { return }
+                                                // self.group.enter()
                                                 
-//                                                var session = URLSession.shared
-//                                                if  let cookies =  URLSession.shared.configuration.httpCookieStorage?.cookies {
-//                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
-//                                                }
-//
-//                                                let dataStore = WKWebsiteDataStore.default()
-//                                                dataStore.httpCookieStore.getAllCookies { (cookies) in
-//
-//                                                    print(src)
-//                                                    let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
-//                                                    print(url)
-//                                                    var request = URLRequest(url: url)
-//
-//                                                    //request.httpShouldHandleCookies = true
-//                                                    self.allHeaderFields["Upgrade-Insecure-Requests"] = "1"
-//                                                    request.allHTTPHeaderFields = self.allHeaderFields
-//
-//                                                    print(cookies)
-//                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
-//                                                    let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
-//                                                        guard let data = data else { return }
-//                                                        let html = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
-//
-//
-//                                                        print(html)
-//
-//                                                    }
-//
-//                                                    task.resume()
-//                                                }
+                                                //                                                var session = URLSession.shared
+                                                //                                                if  let cookies =  URLSession.shared.configuration.httpCookieStorage?.cookies {
+                                                //                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
+                                                //                                                }
+                                                //
+                                                //                                                let dataStore = WKWebsiteDataStore.default()
+                                                //                                                dataStore.httpCookieStore.getAllCookies { (cookies) in
+                                                //
+                                                //                                                    print(src)
+                                                //                                                    let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
+                                                //                                                    print(url)
+                                                //                                                    var request = URLRequest(url: url)
+                                                //
+                                                //                                                    //request.httpShouldHandleCookies = true
+                                                //                                                    self.allHeaderFields["Upgrade-Insecure-Requests"] = "1"
+                                                //                                                    request.allHTTPHeaderFields = self.allHeaderFields
+                                                //
+                                                //                                                    print(cookies)
+                                                //                                                    URLSession.shared.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: url)
+                                                //                                                    let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
+                                                //                                                        guard let data = data else { return }
+                                                //                                                        let html = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+                                                //
+                                                //
+                                                //                                                        print(html)
+                                                //
+                                                //                                                    }
+                                                //
+                                                //                                                    task.resume()
+                                                //                                                }
                                                 
-                                                let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
-                                                let webview2 = CustomWebview(frame: .zero)
-                                                webview2.load(URLRequest(url: url))
+                                                //WKWebViewConfiguration.cookiesIncluded { [weak self] configuration in
+                                                
+                                                //}
+                                                
+                                                //                         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                                //                                                    let url = URL(string: "https://www.dgae-siae.unam.mx/\(src)")!
+                                                //                                                    self.semaphore.wait()
+                                                //                                                    // CallbackWebView(frame: .zero, url: url, configuration: configuration)
+                                                //                                                    webView.load(URLRequest(url: url))
+                                                //
+                                                //                                                    if let callbackWebView = webView as? CallbackWebView {
+                                                //
+                                                //                                                        callbackWebView.finish = { (status) in
+                                                //                                                            //self.group.leave()
+                                                //                                                            self.semaphore.signal()
+                                                //                                                        }
+                                                //                                                    }
+                                                //            }
+                                                
+                                                wait += 5
+                                                //webview2.load(URLRequest(url: url))
                                                 
                                                 
                                             }
+                                            //group.wait()
+                                            //                                            self.group.notify(queue: .main) {
+                                            //                                                print("finish")
+                                            //                                            }
                                         }
                                         
                                         if !self.htmlContains {
@@ -199,7 +267,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                                             self.htmlAcademicLog = html as? String
                                             if let htmlAcademicLog = self.htmlAcademicLog, let doc = try? HTML(html: htmlAcademicLog, encoding: .utf8) {
                                                 //print(htmlAcademicLog)
-                                               // var subjects: [Subject] = []
+                                                // var subjects: [Subject] = []
                                                 var countSection = 0
                                                 var countRow = 0
                                                 var sections: [SubjectSection] = []
@@ -262,6 +330,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                 DispatchQueue.main.async {
                                                     if sections.count > 0 {
                                                         self.networkManager.subjectSections = sections
+                                                        self.networkManager.showSubjectList = true
                                                     }
                                                 }
                                             }
@@ -278,3 +347,27 @@ struct SwiftUIWebView_Previews: PreviewProvider {
         SwiftUIWebView(viewModel: WebViewModel(link: "https://google.com"), networkManager: NetworkManager())
     }
 }
+
+//extension WKWebViewConfiguration {
+//    /// Async Factory method to acquire WKWebViewConfigurations packaged with system cookies
+//    static func cookiesIncluded(completion: @escaping (WKWebViewConfiguration?) -> Void) {
+//        let config = WKWebViewConfiguration()
+//        guard let cookies = HTTPCookieStorage.shared.cookies else {
+//            completion(config)
+//            return
+//        }
+//        // Use nonPersistent() or default() depending on if you want cookies persisted to disk
+//        // and shared between WKWebViews of the same app (default), or not persisted and not shared
+//        // across WKWebViews in the same app.
+//        let dataStore = WKWebsiteDataStore.nonPersistent()
+//        let waitGroup = DispatchGroup()
+//        for cookie in cookies {
+//            waitGroup.enter()
+//            dataStore.httpCookieStore.setCookie(cookie) { waitGroup.leave() }
+//        }
+//        waitGroup.notify(queue: DispatchQueue.main) {
+//            config.websiteDataStore = dataStore
+//            completion(config)
+//        }
+//    }
+//}

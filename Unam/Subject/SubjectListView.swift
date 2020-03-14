@@ -15,82 +15,59 @@ struct ContentView: View {
     @State private var isPresented = false
     @State var showActionSheet: Bool = false
     
+
+    
+    @State private var width: CGFloat = 0
+    @State private var heigh: CGFloat = 0
+    
     var actionSheet: ActionSheet {
         get {
-            let buttons: [ActionSheet.Button] = [.default(Text("Save")), .default(Text("Delete")), .destructive(Text("Cancel"))]
-            return ActionSheet(title: Text("Action Sheet"), message: Text("Choose Option"), buttons: buttons)
+            let buttons: [ActionSheet.Button] = [.default(Text("Pdf")), .destructive(Text("Cancel"))]
+            return ActionSheet(title: Text(""), message: Text("Share:"), buttons: buttons)
         }
     }
     
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach(networkManager.subjectSections) { section in
-                        Section(header: Text(section.title ?? "")) {
-                            ForEach(section.results, id: \.id) { subject in
-                                NavigationLink(destination: SubjectDetailView(subject: subject)) {
-                                    SubjectRow(subject: subject)
-                                }
-                            }
-                        }
-                    }
+                if !networkManager.showSubjectList {
+                    SwiftUIWebView(viewModel: WebViewModel(link: Constant.Web.main), networkManager: networkManager)
+                } else {
+                    List {
+                                           ForEach(networkManager.subjectSections) { section in
+                                               Section(header: Text(section.title ?? "")) {
+                                                   ForEach(section.results, id: \.id) { subject in
+                                                       NavigationLink(destination: SubjectDetailView(subject: subject)) {
+                                                           SubjectRow(subject: subject)
+                                                       }
+                                                   }
+                                               }
+                                           }
+                                       }
                 }
-                SwiftUIWebView(viewModel: WebViewModel(link: Constant.Web.main), networkManager: networkManager)
             }
+            
+//            VStack {
+//            //    if networkManager.showSubjectList {
+//
+//           //     }
+//            }
             .navigationBarTitle(Text(Constant.Subject.title))
             .navigationBarItems(trailing:
-                Button("List") {
-                    self.showActionSheet.toggle()
-                }
+                
+//                Button("List") {
+//                    self.showActionSheet.toggle()
+//                    Image(systemName: "person.crop.circle").imageScale(.large)
+//                }
+                Button(action: {
+                      self.showActionSheet.toggle()
+                   }) {
+                       Image(systemName: "square.and.arrow.up").imageScale(.large)
+                }.opacity(networkManager.showSubjectList ? 1 : 0)
                 .actionSheet(isPresented: $showActionSheet, content: {
                     self.actionSheet
                 })
             )
-        }
-    }
-}
-
-extension TweetbotActionController: UIViewControllerRepresentable {
-    public typealias UIViewControllerType = TweetbotActionController
-    
-    public func makeUIViewController(context: UIViewControllerRepresentableContext<TweetbotActionController>) -> TweetbotActionController {
-        let actionController = TweetbotActionController()
-       // actionController.addSection(Section())
-//        actionController.addAction(Action("View Details", style: .default, handler: { action in
-//            // do something useful
-//        }))
-//        actionController.addAction(Action("View Retweets", style: .default, handler: { action in
-//            // do something useful
-//        }))
-//        actionController.addAction(Action("View in Favstar", style: .default, handler: { action in
-//            // do something useful
-//        }))
-//        actionController.addAction(Action("Translate", style: .default, executeImmediatelyOnTouch: true, handler: { action in
-//            // do something useful
-//        }))
-        
-       
-//        actionController.addAction(Action("Cancel", style: .cancel, handler:nil))
-        return actionController
-    }
-    
-    public func updateUIViewController(_ uiViewController: TweetbotActionController, context: UIViewControllerRepresentableContext<TweetbotActionController>) {
-        
-    }
-    
-    func makeCoordinator() -> TweetbotActionController.Coordinator {
-        return Coordinator(self)
-    }
-}
-
-extension TweetbotActionController {
-    class Coordinator: NSObject, UIFontPickerViewControllerDelegate {
-        var parent: TweetbotActionController
-        @Environment(\.presentationMode) var presentationMode
-        
-        init(_ parent: TweetbotActionController) {
-            self.parent = parent
         }
     }
 }
