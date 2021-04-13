@@ -26,7 +26,7 @@ struct Subject: Identifiable {
 
 struct SubjectSection: Identifiable {
     var id: Int
-    var title: String?
+    var title: String
     var results: [Subject]
 }
 

@@ -8,6 +8,17 @@
 
 import SwiftUI
 
+struct AcademicRow: View {
+    var item: AcademicItem
+    var body: some View {
+        HStack {
+            VStack(alignment: .trailing) {
+                Text(item.planName)
+            }
+        }.padding(Constant.Measurement.base)
+    }
+}
+
 struct SubjectRow: View {
     var subject: Subject
     var body: some View {

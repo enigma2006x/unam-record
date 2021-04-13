@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jose Antonio Trejo Flores. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     func capitalizingFirstLetter() -> String {
@@ -15,5 +15,12 @@ extension String {
 
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
+    }
+    
+    func base64ToImage() -> UIImage? {
+        if let url = URL(string: self),let data = try? Data(contentsOf: url),let image = UIImage(data: data) {
+            return image
+        }
+        return nil
     }
 }
