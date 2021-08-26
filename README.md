@@ -37,8 +37,8 @@ The Profile view shows the account used to log into the SIAE system.
 
 <table>
     <tr>
-        <th width=340><img src="../ProfileView1.png" ></th>
-        <th width=340><img src="../ProfileView2.png" ></th>
+        <th width=340><img src="../main/ProfileView1.png" ></th>
+        <th width=340><img src="../main/ProfileView2.png" ></th>
     </tr>
 </table>
 
@@ -48,8 +48,8 @@ The Academic Record view shows the academic record of the account used in the SI
 
 <table>
     <tr>
-        <th width=340><img src="../AcademicRecord1.png" ></th>
-        <th width=340><img src="../AcademicRecord2.png" ></th>
+        <th width=340><img src="../main/AcademicRecord1.png" ></th>
+        <th width=340><img src="../main/AcademicRecord2.png" ></th>
     </tr>
 </table>
 
@@ -59,8 +59,8 @@ The Academic Record Details view shows the details for the selected account and 
 
 <table>
     <tr>
-        <th width=340><img src="../AcademicRecordDetails1.png" ></th>
-        <th width=340><img src="../AcademicRecordDetails2.png" ></th>
+        <th width=340><img src="../main/AcademicRecordDetails1.png" ></th>
+        <th width=340><img src="../main/AcademicRecordDetails2.png" ></th>
     </tr>
 </table>
 
@@ -77,8 +77,8 @@ The UNAM Mobile allows you to share your Academic Record using different vias li
 
 <table>
     <tr>
-        <th width=340><img src="../PrintView1.png" ></th>
-        <th width=340><img src="../PrintView2.png" ></th>
+        <th width=340><img src="../main/PrintView1.png" ></th>
+        <th width=340><img src="../main/PrintView2.png" ></th>
     </tr>
 </table>
 
@@ -90,8 +90,8 @@ This browser has been built using the Combine, WebKit and SwiftUI frameworks, gi
 
 <table>
     <tr>
-        <th width=340><img src="../GazetteView1.png" ></th>
-        <th width=340><img src="../GazetteView2.png" ></th>
+        <th width=340><img src="../main/GazetteView1.png" ></th>
+        <th width=340><img src="../main/GazetteView2.png" ></th>
     </tr>
 </table>
 
@@ -99,14 +99,14 @@ This browser has been built using the Combine, WebKit and SwiftUI frameworks, gi
 
 The UNAM Mobile contains Unit Tests for evaluate test cases.
 
-<img with=400 src="../UnitTests.png" >
+<img with=400 src="../main/UnitTests.png" >
 
 
 ## UITests
 
 The UNAM Mobile contains Unit Tests for evaluate test cases.
 
-<img with=400 src="../UITests.png" >
+<img with=400 src="../main/UITests.png" >
 
 ## Structs
 
