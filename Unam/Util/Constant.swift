@@ -11,7 +11,13 @@ import UIKit
 
 enum Constant {
     enum Web {
-        static let main = "https://www.dgae-siae.unam.mx/www_gate.php"
+        static let mainURL = "https://www.dgae-siae.unam.mx/www_gate.php"
+        static let academicRecordsURL = "https://www.dgae-siae.unam.mx/reg_try.html"
+        static let gazetteURL = "https://www.gaceta.unam.mx/"
+        
+        static func academicDetails(accountID: String, academicKey: String) -> String {
+            "https://www.dgae-siae.unam.mx/www_try.php?cta=" + accountID + "&llave=" + academicKey + "&acc=hsa"
+        }
     }
     
     enum Subject {
@@ -19,7 +25,7 @@ enum Constant {
     }
     
     enum SubjectDetail {
-        static let title = "Historial Academico"
+        static let title = "Historial Académico"
     }
     
     enum Measurement {
@@ -27,4 +33,9 @@ enum Constant {
         static let base2x = base * 2
         static let base3x = base * 3
     }
+
+    enum Pdf {
+        static let title = "HistorialAcademico"
+    }
+    
 }

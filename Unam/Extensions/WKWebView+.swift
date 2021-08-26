@@ -36,26 +36,36 @@ extension WKWebView {
     
     func printContent() {
         
-        if let path = SwiftUIWebView.pdfFile {
+        if let path = UserDataWebModel.pdfFile {
             let url = URL(fileURLWithPath: path)
-            SwiftUIWebView.customWebView.load(URLRequest(url: url))
+            UserDataWebModel.customWebView.load(URLRequest(url: url))
         }
         
         let printController = UIPrintInteractionController.shared
         
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = .general
-        printInfo.jobName = "Historia Academica"
+        printInfo.jobName = Constant.SubjectDetail.title
         printInfo.duplex = .none
         printInfo.orientation = .portrait
         
         printController.printPageRenderer = nil
         printController.printingItems = nil
-        printController.printingItem = SwiftUIWebView.customWebView.url
+        printController.printingItem = UserDataWebModel.customWebView.url
         
         printController.printInfo = printInfo
         printController.showsNumberOfCopies = true
         
         printController.present(animated: true)
+    }
+    
+    func shareContent() {
+        guard let documentPath = UserDataWebModel.pdfFile,
+              FileManager.default.fileExists(atPath: documentPath) else { return }
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [NSURL(fileURLWithPath: documentPath)], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+        
     }
 }

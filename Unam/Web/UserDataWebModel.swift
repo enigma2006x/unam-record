@@ -10,25 +10,27 @@ import SwiftUI
 import WebKit
 import Kanna
 
-struct SwiftUIWebView: UIViewRepresentable {
+struct UserDataWebModel: UIViewRepresentable {
     
-    @ObservedObject private var networkManager: NetworkManager
+    @ObservedObject private var userDataViewModel: UserDataViewModel
     private var mainURL: URL?
     
     static let customWebView = CustomWebView(frame: .zero)
     static var pdfFile: String?
     
-    init(networkManager: NetworkManager,
+    init(userDataViewModel: UserDataViewModel,
          mainURL: URL?) {
-        self.networkManager = networkManager
+        self.userDataViewModel = userDataViewModel
         self.mainURL = mainURL
     }
     
     private let webView: CustomWebView =  {
+        customWebView.backgroundColor = .clear
+        customWebView.isOpaque = false
         return customWebView
     }()
     
-    func makeUIView(context: UIViewRepresentableContext<SwiftUIWebView>) -> WKWebView {
+    func makeUIView(context: UIViewRepresentableContext<UserDataWebModel>) -> WKWebView {
         webView.navigationDelegate = context.coordinator
         
         if let url = mainURL {
@@ -38,24 +40,24 @@ struct SwiftUIWebView: UIViewRepresentable {
         return webView
     }
     
-    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<SwiftUIWebView>) {
+    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<UserDataWebModel>) {
     }
     
-    func makeCoordinator() -> SwiftUIWebView.Coordinator {
-        return Coordinator(networkManager: networkManager)
+    func makeCoordinator() -> UserDataWebModel.Coordinator {
+        return Coordinator(userDataViewModel: userDataViewModel)
     }
     
     final class Coordinator: NSObject, WKNavigationDelegate {
-        private var networkManager: NetworkManager
+        private var userDataViewModel: UserDataViewModel
         var htmlAcademicLog: String?
         var allHeaderFields: [String: String] = [:]
         let group = DispatchGroup()
         let semaphore = DispatchSemaphore(value: 0)
         
-        init(networkManager: NetworkManager) {
-            self.networkManager = networkManager
-            self.networkManager.subjectSections = []
-            self.networkManager.isShowingSubjectItems = false
+        init(userDataViewModel: UserDataViewModel) {
+            self.userDataViewModel = userDataViewModel
+            self.userDataViewModel.subjectSections = []
+            self.userDataViewModel.isShowingSubjectItems = false
             
             super.init()
         }
@@ -66,20 +68,22 @@ struct SwiftUIWebView: UIViewRepresentable {
             
             if navigationResponse.response is HTTPURLResponse {
                 
-                if !NetworkManager.isLoadAcademicTrajectory && NetworkManager.htmlContains {
-                    NetworkManager.isLoadAcademicTrajectory = true
+                if !UserDataViewModel.isLoadAcademicTrajectory && UserDataViewModel.htmlContains {
+                    UserDataViewModel.isLoadAcademicTrajectory = true
                     
-                    if let url = URL(string: "https://www.dgae-siae.unam.mx/reg_try.html") {
-                        webView.alpha = 0
-                        webView.load(URLRequest(url: url))
-                    }
+                    loadAcademicRecords(webView)
                     
                 }
             }
             decisionHandler(.allow)
         }
         
-        
+        private func loadAcademicRecords(_ webView: WKWebView) {
+            if let url = URL(string: Constant.Web.academicRecordsURL) {
+                webView.alpha = 0
+                webView.load(URLRequest(url: url))
+            }
+        }
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
@@ -93,7 +97,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                let accountValue = accountTag["value"],
                                                !accountValue.isEmpty && accountValue != "aut" {
                                                 webView.alpha = 0
-                                                self.networkManager.accountID = accountValue.trimmingCharacters(in: .whitespacesAndNewlines)
+                                                self.userDataViewModel.accountID = accountValue.trimmingCharacters(in: .whitespacesAndNewlines)
                                             }
                                             
                                             let imageInput = doc.css("img[class='foto_alumno']")
@@ -102,34 +106,34 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                let imageValue = imageTag["src"],
                                                !imageValue.isEmpty,
                                                let image = imageValue.base64ToImage() {
-                                                self.networkManager.accountImage = image
+                                                self.userDataViewModel.accountImage = image
                                             }
                                             
                                             let tableInput = doc.css("table td[class='CellDat']").dropFirst()
                                             if let tableTag = tableInput.makeIterator().next(),
                                                let tableValue = tableTag.text,
-                                               !tableValue.isEmpty {
-                                                self.networkManager.accountFullName = tableValue.trimmingCharacters(in: .whitespacesAndNewlines)
+                                               !tableValue.isEmpty, Int(tableValue) == nil {
+                                                self.userDataViewModel.accountFullName = tableValue.trimmingCharacters(in: .whitespacesAndNewlines)
                                             }
                                         }
                                         
-                                        if !NetworkManager.htmlContains {
+                                        if !UserDataViewModel.htmlContains {
                                             let dataStore = WKWebsiteDataStore.default()
                                             dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
-                                                NetworkManager.htmlContains = records.contains { (record) -> Bool in
-                                                    if record.displayName.contains(NetworkManager.cookieName) {
+                                                UserDataViewModel.htmlContains = records.contains { (record) -> Bool in
+                                                    if record.displayName.contains(UserDataViewModel.cookieName) {
                                                         return true
                                                     }
                                                     return false
                                                 }
                                             }
                                             
-                                        } else if NetworkManager.isLoadAcademicTrajectory && NetworkManager.htmlContains &&
-                                                    !NetworkManager.isLoadAcademicContent {
+                                        } else if UserDataViewModel.isLoadAcademicTrajectory && UserDataViewModel.htmlContains &&
+                                                    !UserDataViewModel.isLoadAcademicContent {
                                             
                                             if let htmlString = html as? String, htmlString.contains("captcha") {
                                                 webView.alpha = 1
-                                                NetworkManager.isLoadAcademicTrajectory = false
+                                                UserDataViewModel.isLoadAcademicTrajectory = false
                                                 return
                                             }
                                             
@@ -162,30 +166,30 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                                                         campus: campusValue,
                                                                                         planName: planNameValue)
                                                         
-                                                        if !self.networkManager.academicItems.contains(academicItem) {
-                                                            self.networkManager.academicItems.append(academicItem)
+                                                        if !self.userDataViewModel.academicItems.contains(academicItem) {
+                                                            self.userDataViewModel.academicItems.append(academicItem)
                                                         }
                                                     }
                                                 })
                                                 
-                                                if !self.networkManager.accountID.isEmpty &&
-                                                    !self.networkManager.accountFullName.isEmpty {
+                                                if !self.userDataViewModel.accountID.isEmpty &&
+                                                    !self.userDataViewModel.accountFullName.isEmpty {
                                                     
-                                                    self.networkManager.isShowingAcademicItems = true
+                                                    self.userDataViewModel.isShowingAcademicItems = true
                                                     webView.alpha = 0
-                                                    NetworkManager.isLoadAcademicContent = true
+                                                    UserDataViewModel.isLoadAcademicContent = true
                                                 }
                                                 
                                             }
                                             
-                                        } else if NetworkManager.isLoadAcademicContent && NetworkManager.htmlContains {
+                                        } else if UserDataViewModel.isLoadAcademicContent && UserDataViewModel.htmlContains {
                                             self.htmlAcademicLog = html as? String
                                             if let htmlAcademicLog = self.htmlAcademicLog,
                                                let doc = try? HTML(html: htmlAcademicLog, encoding: .utf8) {
                                                 
                                                 let path = self.createPDF(formatter: webView.viewPrintFormatter(),
-                                                                          filename: "PDFDocument")
-                                                SwiftUIWebView.pdfFile = path
+                                                                          filename: Constant.Pdf.title)
+                                                UserDataWebModel.pdfFile = path
                                                 var countSection = 0
                                                 var countRow = 0
                                                 var sections: [SubjectSection] = []
@@ -217,7 +221,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                         for (indexTd, td) in td.enumerated() {
                                                             
                                                             if indexTd == 0 {
-                                                                subject.idPlantel = td.text
+                                                                subject.idCampus = td.text
                                                             } else if indexTd == 1 {
                                                                 subject.idSubject = td.text
                                                             } else if indexTd == 2 {
@@ -233,7 +237,7 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                             } else if indexTd == 7 {
                                                                 subject.period = td.text
                                                             } else if indexTd == 8 {
-                                                                subject.folio = td.text
+                                                                subject.invoice = td.text
                                                             } else if indexTd == 9 {
                                                                 subject.group = td.text
                                                             } else if indexTd == 10 {
@@ -249,8 +253,8 @@ struct SwiftUIWebView: UIViewRepresentable {
                                                 }
                                                 
                                                 DispatchQueue.main.async {
-                                                    self.networkManager.subjectSections = sections
-                                                    self.networkManager.isShowingSubjectItems = true
+                                                    self.userDataViewModel.subjectSections = sections
+                                                    self.userDataViewModel.isShowingSubjectItems = true
                                                 }
                                             }
                                         }
@@ -293,8 +297,8 @@ struct SwiftUIWebView: UIViewRepresentable {
     }
 }
 
-struct SwiftUIWebView_Previews: PreviewProvider {
+struct UserDataWebModel_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIWebView(networkManager: NetworkManager.shared, mainURL: URL(string: ""))
+        UserDataWebModel(userDataViewModel: UserDataViewModel.shared, mainURL: URL(string: ""))
     }
 }

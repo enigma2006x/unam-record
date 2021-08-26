@@ -12,20 +12,26 @@ import XLActionController
 import QuickLook
 
 struct SubjectView: View {
-    @ObservedObject var networkManager = NetworkManager.shared
+    
+    @ObservedObject var userDataViewModel = UserDataViewModel.shared
     @State private var isPresented = false
     @State var showActionSheet: Bool = false
     @State private var width: CGFloat = 0
     @State private var heigh: CGFloat = 0
+    
     var academicItem: AcademicItem
     
-
     var actionSheet: ActionSheet {
         get {
-            let printPDF = ActionSheet.Button.default(Text("PDF")) {
-                SwiftUIWebView.customWebView.printContent()
+            let printPDF = ActionSheet.Button.default(Text("Imprimir")) {
+                UserDataWebModel.customWebView.printContent()
             }
-            let buttons: [ActionSheet.Button] = [printPDF, .destructive(Text("Cancel"))]
+            
+            let shareContent = ActionSheet.Button.default(Text("Compartir")) {
+                UserDataWebModel.customWebView.shareContent()
+            }
+            
+            let buttons: [ActionSheet.Button] = [printPDF, shareContent, .destructive(Text("Cancelar"))]
             return ActionSheet(title: Text(""), message: Text("Share:"), buttons: buttons)
         }
     }
@@ -33,8 +39,9 @@ struct SubjectView: View {
     var body: some View {
         
         VStack {
-            if !networkManager.isShowingSubjectItems {
-                SwiftUIWebView(networkManager: networkManager, mainURL: URL(string: "https://www.dgae-siae.unam.mx/www_try.php?cta=" + networkManager.accountID + "&llave=" + academicItem.key + "&acc=hsa"))
+            if !userDataViewModel.isShowingSubjectItems {
+                let detailURL = Constant.Web.academicDetails(accountID: userDataViewModel.accountID, academicKey: academicItem.key)
+                UserDataWebModel(userDataViewModel: userDataViewModel, mainURL: URL(string: detailURL))
             } else {
                 
                 List {
@@ -44,7 +51,7 @@ struct SubjectView: View {
                     Text("Plantel").font(.headline)
                     Text(academicItem.campus).font(.subheadline).lineLimit(nil)
                     
-                    ForEach(networkManager.subjectSections) { section in
+                    ForEach(userDataViewModel.subjectSections) { section in
                         Section(header: Text(section.title)) {
                             ForEach(section.results, id: \.id) { subject in
                                 NavigationLink(destination: SubjectDetailView(subject: subject)) {
@@ -55,20 +62,19 @@ struct SubjectView: View {
                     }
                 }
             }
-            
         }
-        .navigationBarTitle("Historia Académica")
+        .navigationBarTitle(Constant.SubjectDetail.title)
         .navigationBarItems(trailing:
                                 Button(action: {
                                     showActionSheet.toggle()
                                 }) {
                                     Image(systemName: "square.and.arrow.up").imageScale(.large)
-                                }.opacity(networkManager.isShowingAcademicItems ? 1 : 0)
+                                }.opacity(userDataViewModel.isShowingAcademicItems ? 1 : 0)
                                 .actionSheet(isPresented: $showActionSheet, content: {
                                    actionSheet
                                 })
         ).onAppear {
-            networkManager.isShowingSubjectItems = false
+            userDataViewModel.isShowingSubjectItems = false
         }
     }    
 }

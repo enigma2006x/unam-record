@@ -7,10 +7,9 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct AcademicView: View {
-    @ObservedObject var networkManager = NetworkManager.shared
+    @ObservedObject var userDataViewModel = UserDataViewModel.shared
     @State private var isPresented = false
     @State var showActionSheet: Bool = false
     @State private var width: CGFloat = 0
@@ -19,12 +18,12 @@ struct AcademicView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if !networkManager.isShowingAcademicItems {
-                    SwiftUIWebView(networkManager: networkManager, mainURL: URL(string: "https://www.dgae-siae.unam.mx/www_gate.php"))
+                if !userDataViewModel.isShowingAcademicItems {
+                    UserDataWebModel(userDataViewModel: userDataViewModel, mainURL: URL(string: Constant.Web.mainURL))
                 } else {
                     
                     List {
-                        ForEach(networkManager.academicItems) { item in
+                        ForEach(userDataViewModel.academicItems) { item in
                             Section(header: Text(item.campus)) {
                                 NavigationLink(destination: SubjectView(academicItem: item)) {
                                     AcademicRow(item: item)

@@ -10,7 +10,7 @@ import Foundation
 
 struct Subject: Identifiable {
     var id: Int
-    var idPlantel: String?
+    var idCampus: String?
     var idSubject: String?
     var credits: String?
     var qualification: String?
@@ -18,7 +18,7 @@ struct Subject: Identifiable {
     var name: String?
     var examType: String?
     var period: String?
-    var folio: String?
+    var invoice: String?
     var group: String?
     var ord: String?
     var ext: String?
@@ -29,4 +29,3 @@ struct SubjectSection: Identifiable {
     var title: String
     var results: [Subject]
 }
-

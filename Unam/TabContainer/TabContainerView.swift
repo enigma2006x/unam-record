@@ -10,24 +10,41 @@ import SwiftUI
 
 struct TabContainerView: View {
     
-    @ObservedObject private var networkManager = NetworkManager.shared
+    @Environment(\.colorScheme) var colorScheme
     
+    @ObservedObject private var userDataViewModel = UserDataViewModel.shared
+    init() {
+        
+       }
     var body: some View {
-        if !networkManager.isShowingAcademicItems {
-            SwiftUIWebView(networkManager: networkManager, mainURL: URL(string: "https://www.dgae-siae.unam.mx/www_gate.php"))
+        if !userDataViewModel.isShowingAcademicItems {
+            NavigationView {
+                VStack(alignment: .center) {
+                    UserDataWebModel(userDataViewModel: userDataViewModel, mainURL: URL(string: Constant.Web.mainURL))
+                        .background(Color(UIColor.customBlue))
+                }.edgesIgnoringSafeArea(.all)
+                .background(Color(UIColor.customBlue))
+                .navigationBarTitle("UNAM Mobile")
+            }
+           
         } else {
-        TabView {
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Perfil")
-                }
-            AcademicView()
-                .tabItem {
-                    Image(systemName: "doc.plaintext.fill")
-                    Text("Trayectoria")
-                }
-        }
+            TabView {
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Perfil")
+                    }
+                AcademicView()
+                    .tabItem {
+                        Image(uiImage: UIImage(named: "doc")!)
+                        Text("Trayectoria")
+                    }
+                NewsView()
+                    .tabItem {
+                        Image(uiImage: UIImage(named: "news")!)
+                        Text("Gaceta")
+                    }
+            }.accentColor(colorScheme == .dark ? Color(.white) : Color(.customBlue))
         }
     }
 }
