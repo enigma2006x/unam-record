@@ -78,7 +78,7 @@ The UNAM Mobile allows you to share your Academic Record using different vias li
 <table>
     <tr>
         <th width=340><img src="../main/PrintView1.png" ></th>
-        <th width=340><img src="../main/PrintView2.png" ></th>
+        <th width=340><img src="../main/PrintView3.png" ></th>
     </tr>
 </table>
 
@@ -91,7 +91,7 @@ This browser has been built using the Combine, WebKit and SwiftUI frameworks, gi
 <table>
     <tr>
         <th width=340><img src="../main/GazetteView1.png" ></th>
-        <th width=340><img src="../main/GazetteView2.png" ></th>
+        <th width=340><img src="../main/GazetteView3.png" ></th>
     </tr>
 </table>
 
