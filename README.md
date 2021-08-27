@@ -104,7 +104,7 @@ The UNAM Mobile contains Unit Tests for evaluate test cases.
 
 ## UITests
 
-The UNAM Mobile contains Unit Tests for evaluate test cases.
+The UNAM Mobile contains UITests for evaluate test cases.
 
 <img with=400 src="../main/UITests.png" >
 

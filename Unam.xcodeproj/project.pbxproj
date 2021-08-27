@@ -25,6 +25,7 @@
 		8385995026D70B4A00E91884 /* GazetteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385994F26D70B4A00E91884 /* GazetteView.swift */; };
 		8385996A26D85DD700E91884 /* UnamUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385996926D85DD700E91884 /* UnamUnitTests.swift */; };
 		8385997426D85F2500E91884 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385997326D85F2500E91884 /* NetworkMock.swift */; };
+		8385998426D866FE00E91884 /* UnamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385998326D866FE00E91884 /* UnamUITests.swift */; };
 		83A5ED3B26D57B9D00AD9D1F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5ED3A26D57B9D00AD9D1F /* UIColor+.swift */; };
 		83A5ED3F26D5CEF900AD9D1F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5ED3E26D5CEF800AD9D1F /* NewsView.swift */; };
 		83EF5D5F23FC876200BAD81D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF5D5E23FC876200BAD81D /* AppDelegate.swift */; };
@@ -37,6 +38,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		8385996C26D85DD700E91884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83EF5D5323FC876200BAD81D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83EF5D5A23FC876200BAD81D;
+			remoteInfo = Unam;
+		};
+		8385998626D866FE00E91884 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83EF5D5323FC876200BAD81D /* Project object */;
 			proxyType = 1;
@@ -67,6 +75,9 @@
 		8385996926D85DD700E91884 /* UnamUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnamUnitTests.swift; sourceTree = "<group>"; };
 		8385996B26D85DD700E91884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8385997326D85F2500E91884 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
+		8385998126D866FE00E91884 /* UnamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8385998326D866FE00E91884 /* UnamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnamUITests.swift; sourceTree = "<group>"; };
+		8385998526D866FE00E91884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83A5ED3A26D57B9D00AD9D1F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		83A5ED3E26D5CEF800AD9D1F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		83EF5D5B23FC876200BAD81D /* Unam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +93,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		8385996426D85DD700E91884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8385997E26D866FE00E91884 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,6 +231,15 @@
 			path = UnamUnitTests;
 			sourceTree = "<group>";
 		};
+		8385998226D866FE00E91884 /* UnamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8385998326D866FE00E91884 /* UnamUITests.swift */,
+				8385998526D866FE00E91884 /* Info.plist */,
+			);
+			path = UnamUITests;
+			sourceTree = "<group>";
+		};
 		83A5ED3D26D5CEDF00AD9D1F /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +254,7 @@
 			children = (
 				83EF5D5D23FC876200BAD81D /* Unam */,
 				8385996826D85DD700E91884 /* UnamUnitTests */,
+				8385998226D866FE00E91884 /* UnamUITests */,
 				83EF5D5C23FC876200BAD81D /* Products */,
 				63D14301599B47A35E624865 /* Pods */,
 				3CDB8506B303DED8F7AE5A9B /* Frameworks */,
@@ -238,6 +266,7 @@
 			children = (
 				83EF5D5B23FC876200BAD81D /* Unam.app */,
 				8385996726D85DD700E91884 /* UnamUnitTests.xctest */,
+				8385998126D866FE00E91884 /* UnamUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,6 +315,24 @@
 			productReference = 8385996726D85DD700E91884 /* UnamUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8385998026D866FE00E91884 /* UnamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8385998826D866FE00E91884 /* Build configuration list for PBXNativeTarget "UnamUITests" */;
+			buildPhases = (
+				8385997D26D866FE00E91884 /* Sources */,
+				8385997E26D866FE00E91884 /* Frameworks */,
+				8385997F26D866FE00E91884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8385998726D866FE00E91884 /* PBXTargetDependency */,
+			);
+			name = UnamUITests;
+			productName = UnamUITests;
+			productReference = 8385998126D866FE00E91884 /* UnamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		83EF5D5A23FC876200BAD81D /* Unam */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83EF5D6F23FC876300BAD81D /* Build configuration list for PBXNativeTarget "Unam" */;
@@ -319,6 +366,10 @@
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 83EF5D5A23FC876200BAD81D;
 					};
+					8385998026D866FE00E91884 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 83EF5D5A23FC876200BAD81D;
+					};
 					83EF5D5A23FC876200BAD81D = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -339,12 +390,20 @@
 			targets = (
 				83EF5D5A23FC876200BAD81D /* Unam */,
 				8385996626D85DD700E91884 /* UnamUnitTests */,
+				8385998026D866FE00E91884 /* UnamUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8385996526D85DD700E91884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8385997F26D866FE00E91884 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -415,6 +474,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8385997D26D866FE00E91884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8385998426D866FE00E91884 /* UnamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83EF5D5723FC876200BAD81D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,6 +516,11 @@
 			isa = PBXTargetDependency;
 			target = 83EF5D5A23FC876200BAD81D /* Unam */;
 			targetProxy = 8385996C26D85DD700E91884 /* PBXContainerItemProxy */;
+		};
+		8385998726D866FE00E91884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83EF5D5A23FC876200BAD81D /* Unam */;
+			targetProxy = 8385998626D866FE00E91884 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,6 +585,48 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unam.app/Unam";
+			};
+			name = Release;
+		};
+		8385998926D866FE00E91884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				INFOPLIST_FILE = UnamUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.uitests.app.UnamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Unam;
+			};
+			name = Debug;
+		};
+		8385998A26D866FE00E91884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				INFOPLIST_FILE = UnamUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.uitests.app.UnamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Unam;
 			};
 			name = Release;
 		};
@@ -686,6 +800,15 @@
 			buildConfigurations = (
 				8385996E26D85DD700E91884 /* Debug */,
 				8385996F26D85DD700E91884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8385998826D866FE00E91884 /* Build configuration list for PBXNativeTarget "UnamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8385998926D866FE00E91884 /* Debug */,
+				8385998A26D866FE00E91884 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

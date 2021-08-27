@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Unam.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8385998026D866FE00E91884"
+               BuildableName = "UnamUITests.xctest"
+               BlueprintName = "UnamUITests"
+               ReferencedContainer = "container:Unam.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
