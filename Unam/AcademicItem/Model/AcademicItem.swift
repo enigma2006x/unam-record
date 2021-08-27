@@ -9,7 +9,7 @@
 import Foundation
 
 struct AcademicItem: Equatable, Identifiable {
-    var id: Int
+    let id: Int
     let key: String
     let campus: String
     let planName: String
