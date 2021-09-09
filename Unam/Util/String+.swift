@@ -10,7 +10,8 @@ import UIKit
 
 extension String {
     func capitalizingFirstLetter() -> String {
-        return lowercased().prefix(1).capitalized + dropFirst()
+        let value = self.replacingOccurrences(of: "-", with: " ")
+        return value.lowercased().prefix(1).capitalized + dropFirst()
     }
 
     mutating func capitalizeFirstLetter() {

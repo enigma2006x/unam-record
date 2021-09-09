@@ -82,19 +82,6 @@ The UNAM Mobile allows you to share your Academic Record using different vias li
     </tr>
 </table>
 
-
-## News View
-
-The News View provides quick access to the latest news from the UNAM Gazette, allowing you to browse the latest news from UNAM. 
-This browser has been built using the Combine, WebKit and SwiftUI frameworks, giving you the opportunity of go and back actions, everything in the same App.
-
-<table>
-    <tr>
-        <th width=340><img src="../main/GazetteView1.png" ></th>
-        <th width=340><img src="../main/GazetteView3.png" ></th>
-    </tr>
-</table>
-
 ## Unit Tests
 
 The UNAM Mobile contains Unit Tests for evaluate test cases.

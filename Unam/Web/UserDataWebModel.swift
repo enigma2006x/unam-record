@@ -89,7 +89,10 @@ struct UserDataWebModel: UIViewRepresentable {
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
                                        completionHandler: { (html: Any?, error: Error?) in
                                         
-                                        if let htmlString = html as? String,
+                                        if Constant.isDebugMode {
+                                            self.userDataViewModel.setTestAccount()
+                            
+                                        } else if let htmlString = html as? String,
                                            let doc = try? HTML(html: htmlString, encoding: .utf8) {
                                             
                                             let accountInput = doc.css("input[type='hidden']", namespaces: ["name": "cta"])
@@ -161,15 +164,30 @@ struct UserDataWebModel: UIViewRepresentable {
                                                     if tdTags.count > 7,
                                                        let planNameValue = tdTags[4].text, planNameValue.count > 5 {
                                                         
-                                                        let academicItem = AcademicItem(id: index,
+                                                        var campusIdValue = "-"
+                                                        var careerIdValue = "-"
+                                               
+                                                        let campusId = tdTags[0].text
+                                                        campusIdValue = campusId ?? "-"
+                                                        
+                                                        let careerId = tdTags[1].text
+                                                        careerIdValue = careerId ?? "-"
+                                                
+                                                        careerIdValue = careerIdValue.isEmpty ? "-" : careerIdValue
+                                                        
+                                                        var academicItem = AcademicItem(id: index,
                                                                                         key: keyValue,
-                                                                                        campus: campusValue,
-                                                                                        planName: planNameValue)
+                                                                                        campus: campusValue.capitalized,
+                                                                                        planName: planNameValue.capitalized)
+                                                        academicItem.campusId = campusIdValue
+                                                        academicItem.careerId = careerIdValue
                                                         
                                                         if !self.userDataViewModel.academicItems.contains(academicItem) {
                                                             self.userDataViewModel.academicItems.append(academicItem)
                                                         }
                                                     }
+                                                    
+                                                    
                                                 })
                                                 
                                                 if !self.userDataViewModel.accountID.isEmpty &&
@@ -195,7 +213,29 @@ struct UserDataWebModel: UIViewRepresentable {
                                                 var sections: [SubjectSection] = []
                                                 var section: SubjectSection = SubjectSection(id: countSection,
                                                                                              title: "",
+                                                                                             average: 0,
                                                                                              results: [])
+                                                
+                                                if let average = doc.css("td[class='CellTns']").first(where: { $0.text?.lowercased().contains("promedio") ?? false }), let averageValue = average.text?.lowercased().replacingOccurrences(of: "promedio", with: "")  {
+                                                    
+                                                    if Constant.isDebugMode {
+                                                        section.average = 10
+                                                    } else {
+                                                        section.average = Double(averageValue) ?? 0
+                                                    }
+                                                }
+                                                
+                                                if doc.css("td[class='CellTns']").count > 24  {
+                                                    if let totalPercentage = doc.css("td[class='CellTns']")[23].text?.replacingOccurrences(of: "%", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
+                                                        
+                                                        if Constant.isDebugMode {
+                                                            section.totalPercentage = 100
+                                                        } else {
+                                                            section.totalPercentage = Double(totalPercentage)
+                                                        }
+                                                        
+                                                    }
+                                                }
                                                 
                                                 for table in doc.css("table[cellpadding='1']") {
                                                     
@@ -210,8 +250,10 @@ struct UserDataWebModel: UIViewRepresentable {
                                                                 sections.append(section)
                                                             }
                                                             section = SubjectSection(id: countSection,
-                                                                                     title: td.first?.text ?? "",
-                                                                                     results: [])
+                                                                                     title: td.first?.text?.capitalized ?? "",
+                                                                                     average: section.average,
+                                                                                     results: [],
+                                                                                     totalPercentage: section.totalPercentage)
                                                             countSection += 1
                                                             
                                                             continue
@@ -221,7 +263,7 @@ struct UserDataWebModel: UIViewRepresentable {
                                                         for (indexTd, td) in td.enumerated() {
                                                             
                                                             if indexTd == 0 {
-                                                                subject.idCampus = td.text
+                                                                subject.idCampus = td.text?.capitalized
                                                             } else if indexTd == 1 {
                                                                 subject.idSubject = td.text
                                                             } else if indexTd == 2 {
@@ -229,9 +271,13 @@ struct UserDataWebModel: UIViewRepresentable {
                                                             } else if indexTd == 3 {
                                                                 subject.type = td.text
                                                             } else if indexTd == 4 {
-                                                                subject.name = td.text?.lowercased().capitalized
+                                                                subject.name = td.text?.capitalized
                                                             } else if indexTd == 5 {
-                                                                subject.qualification = td.text
+                                                                if Constant.isDebugMode {
+                                                                    subject.qualification = "10"
+                                                                } else {
+                                                                    subject.qualification = td.text
+                                                                }
                                                             } else if indexTd == 6 {
                                                                 subject.examType = td.text
                                                             } else if indexTd == 7 {
@@ -257,13 +303,11 @@ struct UserDataWebModel: UIViewRepresentable {
                                                     self.userDataViewModel.isShowingSubjectItems = true
                                                 }
                                             }
-                                        }
-                                        
-                                       })
+                                        }})
         }
         
         private func createPDF(formatter: UIViewPrintFormatter, filename: String) -> String {
-           
+            
             // 2. Assign print formatter to UIPrintPageRenderer
             let render = UIPrintPageRenderer()
             render.addPrintFormatter(formatter, startingAtPageAt: 0)
@@ -291,7 +335,7 @@ struct UserDataWebModel: UIViewRepresentable {
             // 5. Save PDF file
             let path = "\(NSTemporaryDirectory())\(filename).pdf"
             pdfData.write(toFile: path, atomically: true)
-    
+            
             return path
         }
     }

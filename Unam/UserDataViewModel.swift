@@ -27,6 +27,12 @@ final class UserDataViewModel: ObservableObject {
     @Published var academicItems = [AcademicItem]()
     
     private init() { }
+    
+    func setTestAccount() {
+        accountImage = UIImage.customShe
+        accountID = "099321956"
+        accountFullName = "Scarlett Marie"
+    }
 }
 
 

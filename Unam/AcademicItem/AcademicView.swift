@@ -21,19 +21,40 @@ struct AcademicView: View {
                 if !userDataViewModel.isShowingAcademicItems {
                     UserDataWebModel(userDataViewModel: userDataViewModel, mainURL: URL(string: Constant.Web.mainURL))
                 } else {
-                    
                     List {
-                        ForEach(userDataViewModel.academicItems) { item in
-                            Section(header: Text(item.campus)) {
-                                NavigationLink(destination: SubjectView(academicItem: item)) {
-                                    AcademicRow(item: item)
-                                }
+                        VStack(alignment: .leading, spacing: 0) {
+                            AcademicSubView()
+                        }
+                        .background(Color.customGray)
+                        .listRowInsets(EdgeInsets())
+                        
+                        ForEach(userDataViewModel.academicItems) { section in
+                            Section(header: AcademicHeaderView(title: section.campus)
+                                        .background(Color.white)
+                                        .listRowInsets(EdgeInsets())) {
+                            
+                                    ZStack {
+                                        AcademicRow(item: section).listRowInsets(EdgeInsets())
+                                        NavigationLink(destination: SubjectView(academicItem: section)) {
+                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
+                                    }.hideRowSeparator(background: .white)
+                            
                             }
                         }
-                    }
+                    }.listStyle(PlainListStyle())
                 }
-            }
-            .navigationBarTitle("Trayectoria Académica")
+            }.navigationBarTitle("Trayectoria Académica", displayMode: Appearance.hasTopNotch ? .large : .inline)
+            .onAppear(perform: {
+                Constant.isLoadingNewList = true
+            })
         }
+    }
+}
+
+struct AcademicView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        
+        AcademicView()
     }
 }

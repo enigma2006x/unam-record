@@ -13,6 +13,21 @@ struct AcademicItem: Equatable, Identifiable {
     let key: String
     let campus: String
     let planName: String
+    var campusId: String?
+    var careerId: String?
+    
+    init(id: Int, key: String,
+         campus: String,
+         planName: String,
+         campusId: String? = nil,
+         careerId: String? = nil) {
+        self.id = id
+        self.key = key
+        self.campus = campus.capitalized
+        self.planName = planName.capitalized
+        self.campusId = campusId
+        self.careerId = careerId
+    }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.key == rhs.key

@@ -27,5 +27,20 @@ struct Subject: Identifiable {
 struct SubjectSection: Identifiable {
     var id: Int
     var title: String
+    var average: Double
     var results: [Subject]
+    var totalPercentage: Double?
+    
+    init(id: Int,
+         title: String,
+         average: Double = 0,
+         results: [Subject],
+         totalPercentage: Double? = nil){
+        self.id = id
+        self.title = title
+        self.average = average
+        self.results = results
+        self.totalPercentage = totalPercentage
+    }
+    
 }

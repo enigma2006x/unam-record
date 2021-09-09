@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		297C50FFBB9421B01F7D9742 /* Pods_Unam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22854422829AFDE76AFB842B /* Pods_Unam.framework */; };
+		8314EFC126E287E500C02178 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314EFC026E287E500C02178 /* UIFont+.swift */; };
 		832DCDE524018AC30017B3F9 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDE424018AC30017B3F9 /* Subject.swift */; };
 		832DCDE724018AE80017B3F9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDE624018AE80017B3F9 /* Constant.swift */; };
 		832DCDEB24018B360017B3F9 /* SubjectRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDEA24018B360017B3F9 /* SubjectRow.swift */; };
@@ -26,8 +27,18 @@
 		8385996A26D85DD700E91884 /* UnamUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385996926D85DD700E91884 /* UnamUnitTests.swift */; };
 		8385997426D85F2500E91884 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385997326D85F2500E91884 /* NetworkMock.swift */; };
 		8385998426D866FE00E91884 /* UnamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385998326D866FE00E91884 /* UnamUITests.swift */; };
-		83A5ED3B26D57B9D00AD9D1F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5ED3A26D57B9D00AD9D1F /* UIColor+.swift */; };
+		83A5ED3B26D57B9D00AD9D1F /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5ED3A26D57B9D00AD9D1F /* Color+.swift */; };
 		83A5ED3F26D5CEF900AD9D1F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5ED3E26D5CEF800AD9D1F /* NewsView.swift */; };
+		83D9984A26E400D0008CF27B /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9984926E400D0008CF27B /* Image+.swift */; };
+		83D9984F26E40D08008CF27B /* AcademicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9984E26E40D08008CF27B /* AcademicHeaderView.swift */; };
+		83D9985726E45EF6008CF27B /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9985626E45EF6008CF27B /* View+.swift */; };
+		83D9985D26E46066008CF27B /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9985C26E46066008CF27B /* HeaderProfileView.swift */; };
+		83D9986226E47206008CF27B /* AcademicRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9986126E47206008CF27B /* AcademicRow.swift */; };
+		83D9986726E690A9008CF27B /* ProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9986626E690A9008CF27B /* ProfileContentView.swift */; };
+		83D9986F26E6BE8F008CF27B /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9986E26E6BE8F008CF27B /* Double+.swift */; };
+		83D9987726E6CB4C008CF27B /* SubjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9987626E6CB4C008CF27B /* SubjectHeaderView.swift */; };
+		83D9987E26E6CC0F008CF27B /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9987D26E6CC0F008CF27B /* RatingView.swift */; };
+		83D9988326E72821008CF27B /* AcademicSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D9988226E72821008CF27B /* AcademicSubView.swift */; };
 		83EF5D5F23FC876200BAD81D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF5D5E23FC876200BAD81D /* AppDelegate.swift */; };
 		83EF5D6123FC876200BAD81D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF5D6023FC876200BAD81D /* SceneDelegate.swift */; };
 		83EF5D6623FC876200BAD81D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EF5D6423FC876200BAD81D /* Main.storyboard */; };
@@ -56,6 +67,7 @@
 /* Begin PBXFileReference section */
 		22854422829AFDE76AFB842B /* Pods_Unam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		248043DABFCF2A179C34D072 /* Pods-Unam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unam.debug.xcconfig"; path = "Target Support Files/Pods-Unam/Pods-Unam.debug.xcconfig"; sourceTree = "<group>"; };
+		8314EFC026E287E500C02178 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		832DCDE424018AC30017B3F9 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		832DCDE624018AE80017B3F9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		832DCDEA24018B360017B3F9 /* SubjectRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectRow.swift; sourceTree = "<group>"; };
@@ -78,8 +90,18 @@
 		8385998126D866FE00E91884 /* UnamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8385998326D866FE00E91884 /* UnamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnamUITests.swift; sourceTree = "<group>"; };
 		8385998526D866FE00E91884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83A5ED3A26D57B9D00AD9D1F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		83A5ED3A26D57B9D00AD9D1F /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		83A5ED3E26D5CEF800AD9D1F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		83D9984926E400D0008CF27B /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		83D9984E26E40D08008CF27B /* AcademicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicHeaderView.swift; sourceTree = "<group>"; };
+		83D9985626E45EF6008CF27B /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		83D9985C26E46066008CF27B /* HeaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
+		83D9986126E47206008CF27B /* AcademicRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicRow.swift; sourceTree = "<group>"; };
+		83D9986626E690A9008CF27B /* ProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentView.swift; sourceTree = "<group>"; };
+		83D9986E26E6BE8F008CF27B /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		83D9987626E6CB4C008CF27B /* SubjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectHeaderView.swift; sourceTree = "<group>"; };
+		83D9987D26E6CC0F008CF27B /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		83D9988226E72821008CF27B /* AcademicSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicSubView.swift; sourceTree = "<group>"; };
 		83EF5D5B23FC876200BAD81D /* Unam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EF5D5E23FC876200BAD81D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83EF5D6023FC876200BAD81D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +161,7 @@
 			children = (
 				837D17B82624E16900B88072 /* Model */,
 				832DCDEE24018C650017B3F9 /* SubjectView.swift */,
+				83D9987626E6CB4C008CF27B /* SubjectHeaderView.swift */,
 				832DCDEA24018B360017B3F9 /* SubjectRow.swift */,
 			);
 			path = Subject;
@@ -167,6 +190,9 @@
 			children = (
 				837D17BB2624E4EE00B88072 /* Model */,
 				837D17B12624D9E400B88072 /* AcademicView.swift */,
+				83D9988226E72821008CF27B /* AcademicSubView.swift */,
+				83D9984E26E40D08008CF27B /* AcademicHeaderView.swift */,
+				83D9986126E47206008CF27B /* AcademicRow.swift */,
 			);
 			path = AcademicItem;
 			sourceTree = "<group>";
@@ -207,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				837D17CB2624F17700B88072 /* ProfileView.swift */,
+				83D9985C26E46066008CF27B /* HeaderProfileView.swift */,
+				83D9986626E690A9008CF27B /* ProfileContentView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -214,9 +242,14 @@
 		837D17D526251D8000B88072 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				83D9987D26E6CC0F008CF27B /* RatingView.swift */,
 				837D17D626251D8F00B88072 /* WKWebView+.swift */,
-				83A5ED3A26D57B9D00AD9D1F /* UIColor+.swift */,
+				83A5ED3A26D57B9D00AD9D1F /* Color+.swift */,
 				8385994926D6F6E400E91884 /* Appearance.swift */,
+				8314EFC026E287E500C02178 /* UIFont+.swift */,
+				83D9984926E400D0008CF27B /* Image+.swift */,
+				83D9985626E45EF6008CF27B /* View+.swift */,
+				83D9986E26E6BE8F008CF27B /* Double+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,10 +309,10 @@
 			children = (
 				837D17D526251D8000B88072 /* Extensions */,
 				837D17CA2624F16800B88072 /* Profile */,
-				837D17B72624E15800B88072 /* SubjectDetail */,
 				832DCDF024018CA40017B3F9 /* Web */,
 				832DCDE924018B280017B3F9 /* Util */,
 				832DCDE824018B190017B3F9 /* Subject */,
+				837D17B72624E15800B88072 /* SubjectDetail */,
 				83A5ED3D26D5CEDF00AD9D1F /* News */,
 				837D17B02624D9CE00B88072 /* AcademicItem */,
 				83F6F98F23FDFD460094F7FF /* UserDataViewModel.swift */,
@@ -489,23 +522,34 @@
 				832DCDED24018C560017B3F9 /* SubjectDetailView.swift in Sources */,
 				837D17D726251D8F00B88072 /* WKWebView+.swift in Sources */,
 				832DCDE524018AC30017B3F9 /* Subject.swift in Sources */,
+				83D9987E26E6CC0F008CF27B /* RatingView.swift in Sources */,
 				83A5ED3F26D5CEF900AD9D1F /* NewsView.swift in Sources */,
+				83D9985726E45EF6008CF27B /* View+.swift in Sources */,
 				837D17B22624D9E400B88072 /* AcademicView.swift in Sources */,
 				837D17D02624FC6200B88072 /* CustomWebView.swift in Sources */,
 				832DCDF42401A8A50017B3F9 /* String+.swift in Sources */,
 				832DCDEF24018C650017B3F9 /* SubjectView.swift in Sources */,
+				83D9984F26E40D08008CF27B /* AcademicHeaderView.swift in Sources */,
 				832DCDE724018AE80017B3F9 /* Constant.swift in Sources */,
-				83A5ED3B26D57B9D00AD9D1F /* UIColor+.swift in Sources */,
+				83A5ED3B26D57B9D00AD9D1F /* Color+.swift in Sources */,
+				8314EFC126E287E500C02178 /* UIFont+.swift in Sources */,
+				83D9987726E6CB4C008CF27B /* SubjectHeaderView.swift in Sources */,
 				832DCDEB24018B360017B3F9 /* SubjectRow.swift in Sources */,
 				8385995026D70B4A00E91884 /* GazetteView.swift in Sources */,
+				83D9988326E72821008CF27B /* AcademicSubView.swift in Sources */,
 				83F6F99023FDFD460094F7FF /* UserDataViewModel.swift in Sources */,
 				837D17CC2624F17700B88072 /* ProfileView.swift in Sources */,
 				83EF5D5F23FC876200BAD81D /* AppDelegate.swift in Sources */,
+				83D9986726E690A9008CF27B /* ProfileContentView.swift in Sources */,
 				837D17C22624E7DD00B88072 /* TabContainerView.swift in Sources */,
 				8385994A26D6F6E400E91884 /* Appearance.swift in Sources */,
 				83EF5D6123FC876200BAD81D /* SceneDelegate.swift in Sources */,
+				83D9986F26E6BE8F008CF27B /* Double+.swift in Sources */,
+				83D9986226E47206008CF27B /* AcademicRow.swift in Sources */,
 				832DCDF22401A7A10017B3F9 /* UserDataWebModel.swift in Sources */,
+				83D9985D26E46066008CF27B /* HeaderProfileView.swift in Sources */,
 				837D17BD2624E4F700B88072 /* AcademicItem.swift in Sources */,
+				83D9984A26E400D0008CF27B /* Image+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +594,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = UnamUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -572,7 +616,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = UnamUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -593,7 +637,7 @@
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = UnamUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,7 +658,7 @@
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZB4PXY65MT;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = UnamUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -751,7 +795,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L63Z5WA2KN;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = Unam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -761,7 +806,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Unam",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.app;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unammobile.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -775,7 +821,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2ZC42T4TJ9;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 8WKXC2MQ7R;
 				INFOPLIST_FILE = Unam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,7 +832,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Unam",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.Unam;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unammobile.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

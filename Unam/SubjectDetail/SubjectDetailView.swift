@@ -12,100 +12,108 @@ struct SubjectDetailView: View {
     var subject: Subject
     
     var body: some View {
-        VStack{
-            ScrollView(.vertical) {
-                VStack {
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading, spacing: Constant.Measurement.base2x) {
-                            HStack(alignment: .top) {
-                                Text("Clave Plantel")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.idCampus ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Asignatura")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.name ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Clave Asignatura")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.idSubject ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Créditos")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.credits ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Calificación")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text((subject.type ?? "") + " " + (subject.qualification ?? ""))
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Tipo de Examen")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.examType ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Periodo")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.period ?? "")
-                                    .font(.subheadline)
-                            }
-                        }.padding(.top, Constant.Measurement.base2x)
-                        
-                        VStack(alignment: .leading, spacing: Constant.Measurement.base2x) {
-                            HStack(alignment: .top) {
-                                Text("Folio Acta")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.invoice ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Grupo")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.group ?? "")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Ordinario")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.ord ?? "-")
-                                    .font(.subheadline)
-                            }
-                            HStack(alignment: .top) {
-                                Text("Extraordinario")
-                                    .font(.subheadline)
-                                Spacer()
-                                Text(subject.ext ?? "-")
-                                    .font(.subheadline)
-                            }
+        
+        VStack {
+            ZStack {
+                ScrollView(.vertical) {
+                    VStack {
+                        VStack(alignment: .leading) {
+                            VStack(alignment: .leading, spacing: Constant.Measurement.base4x) {
+                                HStack(alignment: .top) {
+                                    Text("Clave Plantel")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.idCampus ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Asignatura")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.name ?? "")
+                                        .font(.headline).bold().multilineTextAlignment(.trailing)
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Clave Asignatura")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.idSubject ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Créditos")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.credits ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Calificación")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text((subject.type ?? "") + " " + (subject.qualification ?? ""))
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Tipo de Examen")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.examType ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Periodo")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.period ?? "")
+                                        .font(.headline).bold()
+                                }
+                            }.padding(.top, Constant.Measurement.base2x)
+                            
+                            VStack(alignment: .leading, spacing: Constant.Measurement.base4x) {
+                                HStack(alignment: .top) {
+                                    Text("Folio Acta")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.invoice ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Grupo")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.group ?? "")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Ordinario")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.ord ?? "-")
+                                        .font(.headline).bold()
+                                }
+                                HStack(alignment: .top) {
+                                    Text("Extraordinario")
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(subject.ext ?? "-")
+                                        .font(.headline).bold()
+                                }
+                                
+                            }.padding(.top, Constant.Measurement.base2x)
                         }
-                    }
-                    
-                }.padding(Constant.Measurement.base2x)
-                
-            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .navigationBarTitle(subject.name ?? "")
+                        
+                    }.padding(Constant.Measurement.base2x)
+                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            }
             
-        }
+        }.background( VStack {
+            Spacer()
+            VStack(alignment: .leading) {
+                Image.customCareer.resizable().opacity(0.45)
+            }.frame(maxHeight: 280)
+        }.background(Color.customGray))
+        .navigationBarTitle(subject.name ?? "")
     }
 }
 

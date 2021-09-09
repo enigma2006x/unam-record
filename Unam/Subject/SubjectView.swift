@@ -38,29 +38,33 @@ struct SubjectView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             if !userDataViewModel.isShowingSubjectItems {
                 let detailURL = Constant.Web.academicDetails(accountID: userDataViewModel.accountID, academicKey: academicItem.key)
                 UserDataWebModel(userDataViewModel: userDataViewModel, mainURL: URL(string: detailURL))
             } else {
-                
                 List {
-                    Text("Nombre del Plan de Estudio").font(.headline)
-                    Text(academicItem.planName).font(.subheadline).lineLimit(nil)
-                    
-                    Text("Plantel").font(.headline)
-                    Text(academicItem.campus).font(.subheadline).lineLimit(nil)
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        SubjectHeaderView(academicItem: academicItem)
+                    }
+                    .background(Color.customGray)
+                    .listRowInsets(EdgeInsets())
                     
                     ForEach(userDataViewModel.subjectSections) { section in
-                        Section(header: Text(section.title)) {
+                        Section(header: AcademicHeaderView(title: section.title)
+                                    .background(Color.white)
+                                    .listRowInsets(EdgeInsets())) {
                             ForEach(section.results, id: \.id) { subject in
-                                NavigationLink(destination: SubjectDetailView(subject: subject)) {
-                                    SubjectRow(subject: subject)
-                                }
+                                ZStack {
+                                    SubjectRow(subject: subject).listRowInsets(EdgeInsets())
+                                    NavigationLink(destination: SubjectDetailView(subject: subject)) {
+                                    }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
+                                }.hideRowSeparator(background: .white)
                             }
                         }
                     }
-                }
+                }.listStyle(PlainListStyle())
             }
         }
         .navigationBarTitle(Constant.SubjectDetail.title)
@@ -71,10 +75,23 @@ struct SubjectView: View {
                                     Image(systemName: "square.and.arrow.up").imageScale(.large)
                                 }.opacity(userDataViewModel.isShowingAcademicItems ? 1 : 0)
                                 .actionSheet(isPresented: $showActionSheet, content: {
-                                   actionSheet
+                                    actionSheet
                                 })
         ).onAppear {
-            userDataViewModel.isShowingSubjectItems = false
+            
+            if Constant.isLoadingNewList {
+                Constant.isLoadingNewList = false
+                userDataViewModel.isShowingSubjectItems = false
+            }
+            
         }
-    }    
+    }
+}
+
+struct SubjectView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        
+        SubjectView(academicItem: AcademicItem(id: 15, key: "2323", campus: "Fac UNAM", planName: "Ingenieria"))
+    }
 }
