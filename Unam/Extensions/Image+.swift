@@ -49,6 +49,10 @@ extension UIImage {
     static var customDoc: UIImage {
         UIImage(named: "doc")!
     }
+    
+    static var customNews: UIImage {
+        UIImage(named: "news")!
+    }
 }
 
 extension Image {
@@ -90,5 +94,9 @@ extension Image {
     
     static var customDoc: Image {
         Image(uiImage: UIImage.customDoc)
+    }
+    
+    static var customNews: Image {
+        Image(uiImage: UIImage.customNews)
     }
 }

@@ -13,6 +13,9 @@ enum Appearance {
     static func loadAppearance() {
         loadAppearanceNavigationBar()
         loadAppearanceTabBar()
+        
+        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
     static func loadAppearanceNavigationBar() {

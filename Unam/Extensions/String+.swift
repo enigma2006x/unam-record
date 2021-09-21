@@ -25,3 +25,19 @@ extension String {
         return nil
     }
 }
+
+extension String {
+    func contains(_ strings: [String]) -> Bool {
+        strings.contains { contains($0) }
+    }
+    
+    var clean: String {
+        String(self.filter { !"\n\t\r".contains($0) })
+            .replacingOccurrences(of: "</em>", with: "")
+            .replacingOccurrences(of: "<em>", with: "")
+            .replacingOccurrences(of: "images:", with: "")
+            .replacingOccurrences(of: "&nbsp", with: "")
+            .replacingOccurrences(of: "Humanidades Comunidad", with: "Humanidades")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}

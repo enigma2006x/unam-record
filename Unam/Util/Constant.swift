@@ -11,14 +11,16 @@ import UIKit
 
 enum Constant {
     
-    static var isDebugMode: Bool = false
+    static var isDebugMode: Bool = true
     
     static var isLoadingNewList: Bool = true
+    
+    static var baseHeight: CGFloat = 290
     
     enum Web {
         static let mainURL = "https://www.dgae-siae.unam.mx/www_gate.php"
         static let academicRecordsURL = "https://www.dgae-siae.unam.mx/reg_try.html"
-        static let gazetteURL = "https://www.gaceta.unam.mx/"
+        static let newsURL = "https://www.gaceta.unam.mx/"
         
         static func academicDetails(accountID: String, academicKey: String) -> String {
             "https://www.dgae-siae.unam.mx/www_try.php?cta=" + accountID + "&llave=" + academicKey + "&acc=hsa"

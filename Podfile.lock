@@ -1,26 +1,20 @@
 PODS:
   - Kanna (5.0.0)
-  - Kingfisher (6.2.1)
-  - XLActionController (5.0.2):
-    - XLActionController/Core (= 5.0.2)
-  - XLActionController/Core (5.0.2)
+  - Kingfisher (6.3.1)
 
 DEPENDENCIES:
   - Kanna (~> 5.0.0)
-  - Kingfisher (~> 6.0)
-  - XLActionController
+  - Kingfisher
 
 SPEC REPOS:
   trunk:
     - Kanna
     - Kingfisher
-    - XLActionController
 
 SPEC CHECKSUMS:
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
-  XLActionController: f1f2226d2c6629db197d4a41f2da907085a4cb9d
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
 
-PODFILE CHECKSUM: edf2b2b4990b32254b50a8ab44c727fb6793503d
+PODFILE CHECKSUM: 861643a9ceb39b8f7211183d6d53c553464611e9
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.0

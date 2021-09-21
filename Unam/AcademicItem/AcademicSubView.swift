@@ -30,7 +30,6 @@ struct AcademicSubView: View {
                         .foregroundColor(Color.customDarkBlue)
                         .bold()
                         .lineLimit(nil)
-                        
                         .padding(.top, Constant.Measurement.base)
                     
                     Text(userDataViewModel.accountFullName)

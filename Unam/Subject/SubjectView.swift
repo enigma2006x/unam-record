@@ -8,7 +8,6 @@
 
 import SwiftUI
 import UIKit
-import XLActionController
 import QuickLook
 
 struct SubjectView: View {

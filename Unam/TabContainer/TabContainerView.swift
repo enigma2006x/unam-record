@@ -79,6 +79,11 @@ struct TabContainerView: View {
                         Image.customDoc
                         Text("Trayectoria")
                     }
+                NewsView()
+                    .tabItem {
+                        Image.customNews
+                        Text("Noticias")
+                    }
             }.edgesIgnoringSafeArea(.all)
             .accentColor(Color.customGold)
         }
