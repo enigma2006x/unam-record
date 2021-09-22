@@ -40,9 +40,7 @@ final class CustomWebView: WKWebView, WKNavigationDelegate {
     func openPageWithSession(url: URL) {
 
         self.getCookies(for: "www.dgae-siae.unam.mx", completion: { (cookies) in
-            print(cookies)
-            
-            
+    
             let cookieHeader = (cookies.compactMap({ (key, value) -> String in
                 return "\(key)=\(value)"
             }) as Array).joined(separator: ";")

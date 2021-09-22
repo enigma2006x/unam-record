@@ -26,7 +26,13 @@ final class UserDataViewModel: ObservableObject {
     @Published var subjectSections = [SubjectSection]()
     @Published var academicItems = [AcademicItem]()
     
-    private init() { }
+    private var mockUser: MockProfileUI?
+    
+    private init() {
+        if Constant.isDebugMode {
+            mockUser = MockProfileUI()
+        }
+    }
     
     func setTestAccount() {
         accountImage = UIImage.customShe

@@ -10,9 +10,17 @@ import SwiftUI
 import WebKit
 import Kanna
 
+protocol UserDataWebModelDataSource {
+    func getAcademicTrajectory() -> String
+    func getAcademicRecord() -> String
+}
+
 struct UserDataWebModel: UIViewRepresentable {
     
+    public static var dataSource: UserDataWebModelDataSource?
+    
     @ObservedObject private var userDataViewModel: UserDataViewModel
+    
     private var mainURL: URL?
     
     static let customWebView = CustomWebView(frame: .zero)
@@ -48,8 +56,9 @@ struct UserDataWebModel: UIViewRepresentable {
     }
     
     final class Coordinator: NSObject, WKNavigationDelegate {
+        
         private var userDataViewModel: UserDataViewModel
-        var htmlAcademicLog: String?
+       
         var allHeaderFields: [String: String] = [:]
         let group = DispatchGroup()
         let semaphore = DispatchSemaphore(value: 0)
@@ -87,13 +96,17 @@ struct UserDataWebModel: UIViewRepresentable {
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
-                                       completionHandler: { (html: Any?, error: Error?) in
+                                       completionHandler: { [weak self] (html: Any?, error: Error?) in
                                         
+                                        guard let self = self else { return }
+                                      
+                                       
                                         if Constant.isDebugMode {
                                             self.userDataViewModel.setTestAccount()
                             
                                         } else if let htmlString = html as? String,
-                                           let doc = try? HTML(html: htmlString, encoding: .utf8) {
+                                           let doc = try? HTML(html: htmlString, encoding: .utf8),
+                                           self.userDataViewModel.accountID.isEmpty {
                                             
                                             let accountInput = doc.css("input[type='hidden']", namespaces: ["name": "cta"])
                                             if let accountTag = accountInput.first,
@@ -134,13 +147,18 @@ struct UserDataWebModel: UIViewRepresentable {
                                         } else if UserDataViewModel.isLoadAcademicTrajectory && UserDataViewModel.htmlContains &&
                                                     !UserDataViewModel.isLoadAcademicContent {
                                             
-                                            if let htmlString = html as? String, htmlString.contains("captcha") {
+                                            if let htmlString = html as? String, htmlString.contains("captcha"), !Constant.isDebugMode {
                                                 webView.alpha = 1
                                                 UserDataViewModel.isLoadAcademicTrajectory = false
                                                 return
                                             }
                                             
-                                            let formAcademicLog = html as? String
+                                            var formAcademicLog = html as? String
+                                            
+                                            if Constant.isDebugMode, let dataSource = UserDataWebModel.dataSource {
+                                                formAcademicLog = dataSource.getAcademicTrajectory()
+                                            }
+                                            
                                             if let htmlAcademicLog = formAcademicLog,
                                                let doc = try? HTML(html: htmlAcademicLog, encoding: .utf8) {
                                                 
@@ -201,9 +219,16 @@ struct UserDataWebModel: UIViewRepresentable {
                                             }
                                             
                                         } else if UserDataViewModel.isLoadAcademicContent && UserDataViewModel.htmlContains {
-                                            self.htmlAcademicLog = html as? String
-                                            if let htmlAcademicLog = self.htmlAcademicLog,
-                                               let doc = try? HTML(html: htmlAcademicLog, encoding: .utf8) {
+                                            
+                                            var htmlAcademicLog = html as? String
+                                            if Constant.isDebugMode, let dataSource = UserDataWebModel.dataSource {
+                                              
+                                                htmlAcademicLog = dataSource.getAcademicRecord()
+                                            }
+                                            
+                                            
+                                            if let htmlAcademicLog = htmlAcademicLog,
+                                                let doc = try? HTML(html: htmlAcademicLog, encoding: .utf8) {
                                                 
                                                 let path = self.createPDF(formatter: webView.viewPrintFormatter(),
                                                                           filename: Constant.Pdf.title)

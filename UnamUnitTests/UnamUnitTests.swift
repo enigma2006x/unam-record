@@ -51,7 +51,7 @@ final class UnamUnitTests: XCTestCase {
             
             for id in TestContant.subjectSectionsIds {
                 let subjectSection = SubjectSection(id: id, title: "Title \(id)", results: [])
-                print(subjectSection)
+                
                 let valueExists = self.shared.subjectSections.contains(where: { $0.id == subjectSection.id && $0.title == subjectSection.title && $0.results.count == subjectSection.results.count })
                 XCTAssertTrue(valueExists)
             }

@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		297C50FFBB9421B01F7D9742 /* Pods_Unam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22854422829AFDE76AFB842B /* Pods_Unam.framework */; };
+		830016E726FBD0D0001664F4 /* UNAMUIUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830016E626FBD0D0001664F4 /* UNAMUIUserTests.swift */; };
+		8300170426FBD402001664F4 /* XCUIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300170326FBD402001664F4 /* XCUIApplication+.swift */; };
+		8300171C26FBD60F001664F4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDE624018AE80017B3F9 /* Constant.swift */; };
+		8300175326FBDAFE001664F4 /* AcademicRecordMock.html in Resources */ = {isa = PBXBuildFile; fileRef = 8300175126FBDAFE001664F4 /* AcademicRecordMock.html */; };
+		8300175426FBDAFE001664F4 /* AcademicTrajectoryMock.html in Resources */ = {isa = PBXBuildFile; fileRef = 8300175226FBDAFE001664F4 /* AcademicTrajectoryMock.html */; };
+		8300175926FBDB1D001664F4 /* MockProfileUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300175826FBDB1D001664F4 /* MockProfileUI.swift */; };
+		8300176026FBDB47001664F4 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300171126FBD491001664F4 /* Bundle+.swift */; };
+		8300176E26FBE606001664F4 /* XCUIElement+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300176D26FBE606001664F4 /* XCUIElement+.swift */; };
 		8314EFC126E287E500C02178 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314EFC026E287E500C02178 /* UIFont+.swift */; };
 		832DCDE524018AC30017B3F9 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDE424018AC30017B3F9 /* Subject.swift */; };
 		832DCDE724018AE80017B3F9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832DCDE624018AE80017B3F9 /* Constant.swift */; };
@@ -52,6 +60,7 @@
 		83EF5D6823FC876300BAD81D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83EF5D6723FC876300BAD81D /* Assets.xcassets */; };
 		83EF5D6B23FC876300BAD81D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EF5D6923FC876300BAD81D /* LaunchScreen.storyboard */; };
 		83F6F99023FDFD460094F7FF /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6F98F23FDFD460094F7FF /* UserDataViewModel.swift */; };
+		C7D04288802F4B50916528D5 /* Pods_UnamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41B11D090BA5C8B97FAAAEE /* Pods_UnamUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +83,13 @@
 /* Begin PBXFileReference section */
 		22854422829AFDE76AFB842B /* Pods_Unam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		248043DABFCF2A179C34D072 /* Pods-Unam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unam.debug.xcconfig"; path = "Target Support Files/Pods-Unam/Pods-Unam.debug.xcconfig"; sourceTree = "<group>"; };
+		830016E626FBD0D0001664F4 /* UNAMUIUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAMUIUserTests.swift; sourceTree = "<group>"; };
+		8300170326FBD402001664F4 /* XCUIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+.swift"; sourceTree = "<group>"; };
+		8300171126FBD491001664F4 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		8300175126FBDAFE001664F4 /* AcademicRecordMock.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AcademicRecordMock.html; sourceTree = "<group>"; };
+		8300175226FBDAFE001664F4 /* AcademicTrajectoryMock.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AcademicTrajectoryMock.html; sourceTree = "<group>"; };
+		8300175826FBDB1D001664F4 /* MockProfileUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileUI.swift; sourceTree = "<group>"; };
+		8300176D26FBE606001664F4 /* XCUIElement+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+.swift"; sourceTree = "<group>"; };
 		8314EFC026E287E500C02178 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		832DCDE424018AC30017B3F9 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		832DCDE624018AE80017B3F9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -124,6 +140,9 @@
 		83EF5D6A23FC876300BAD81D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83EF5D6C23FC876300BAD81D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F6F98F23FDFD460094F7FF /* UserDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
+		A41B11D090BA5C8B97FAAAEE /* Pods_UnamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACBF9AD513D7E5901A1965D5 /* Pods-UnamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnamUITests.release.xcconfig"; path = "Target Support Files/Pods-UnamUITests/Pods-UnamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B3C8C391FCF95A5E7B164487 /* Pods-UnamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnamUITests.debug.xcconfig"; path = "Target Support Files/Pods-UnamUITests/Pods-UnamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C62CE3F4EEA46E797B9E45E1 /* Pods-Unam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unam.release.xcconfig"; path = "Target Support Files/Pods-Unam/Pods-Unam.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D04288802F4B50916528D5 /* Pods_UnamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				22854422829AFDE76AFB842B /* Pods_Unam.framework */,
+				A41B11D090BA5C8B97FAAAEE /* Pods_UnamUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,8 +187,21 @@
 			children = (
 				248043DABFCF2A179C34D072 /* Pods-Unam.debug.xcconfig */,
 				C62CE3F4EEA46E797B9E45E1 /* Pods-Unam.release.xcconfig */,
+				B3C8C391FCF95A5E7B164487 /* Pods-UnamUITests.debug.xcconfig */,
+				ACBF9AD513D7E5901A1965D5 /* Pods-UnamUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8300175026FBDAFE001664F4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8300171126FBD491001664F4 /* Bundle+.swift */,
+				8300175826FBDB1D001664F4 /* MockProfileUI.swift */,
+				8300175126FBDAFE001664F4 /* AcademicRecordMock.html */,
+				8300175226FBDAFE001664F4 /* AcademicTrajectoryMock.html */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		832DCDE824018B190017B3F9 /* Subject */ = {
@@ -325,7 +359,10 @@
 			isa = PBXGroup;
 			children = (
 				8385998326D866FE00E91884 /* UnamUITests.swift */,
+				830016E626FBD0D0001664F4 /* UNAMUIUserTests.swift */,
 				8385998526D866FE00E91884 /* Info.plist */,
+				8300170326FBD402001664F4 /* XCUIApplication+.swift */,
+				8300176D26FBE606001664F4 /* XCUIElement+.swift */,
 			);
 			path = UnamUITests;
 			sourceTree = "<group>";
@@ -376,8 +413,9 @@
 				8376961C26EBBCFE00E2D1F3 /* NewsDetail */,
 				83A5ED3D26D5CEDF00AD9D1F /* News */,
 				837D17B02624D9CE00B88072 /* AcademicItem */,
-				83F6F98F23FDFD460094F7FF /* UserDataViewModel.swift */,
 				837D17C02624E7CE00B88072 /* TabContainer */,
+				8300175026FBDAFE001664F4 /* Mocks */,
+				83F6F98F23FDFD460094F7FF /* UserDataViewModel.swift */,
 				83EF5D6023FC876200BAD81D /* SceneDelegate.swift */,
 				83EF5D5E23FC876200BAD81D /* AppDelegate.swift */,
 				83EF5D6423FC876200BAD81D /* Main.storyboard */,
@@ -413,9 +451,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8385998826D866FE00E91884 /* Build configuration list for PBXNativeTarget "UnamUITests" */;
 			buildPhases = (
+				3C073EF44B12E26FE19362F4 /* [CP] Check Pods Manifest.lock */,
 				8385997D26D866FE00E91884 /* Sources */,
 				8385997E26D866FE00E91884 /* Frameworks */,
 				8385997F26D866FE00E91884 /* Resources */,
+				0C918038CA900A570F2B2DE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,8 +548,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8300175426FBDAFE001664F4 /* AcademicTrajectoryMock.html in Resources */,
 				83EF5D6B23FC876300BAD81D /* LaunchScreen.storyboard in Resources */,
 				83EF5D6823FC876300BAD81D /* Assets.xcassets in Resources */,
+				8300175326FBDAFE001664F4 /* AcademicRecordMock.html in Resources */,
 				83EF5D6623FC876200BAD81D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +559,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C918038CA900A570F2B2DE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnamUITests/Pods-UnamUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnamUITests/Pods-UnamUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnamUITests/Pods-UnamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C073EF44B12E26FE19362F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E2527874DD79B881E090491F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -572,7 +653,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8300170426FBD402001664F4 /* XCUIApplication+.swift in Sources */,
+				8300171C26FBD60F001664F4 /* Constant.swift in Sources */,
+				8300176E26FBE606001664F4 /* XCUIElement+.swift in Sources */,
 				8385998426D866FE00E91884 /* UnamUITests.swift in Sources */,
+				830016E726FBD0D0001664F4 /* UNAMUIUserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,8 +694,10 @@
 				8360F08926F43B2700B80900 /* UIScrollViewViewController.swift in Sources */,
 				8385994A26D6F6E400E91884 /* Appearance.swift in Sources */,
 				8383DBB226EAECBE006C977D /* NewsDetailService.swift in Sources */,
+				8300176026FBDB47001664F4 /* Bundle+.swift in Sources */,
 				83EF5D6123FC876200BAD81D /* SceneDelegate.swift in Sources */,
 				83D9986F26E6BE8F008CF27B /* Double+.swift in Sources */,
+				8300175926FBDB1D001664F4 /* MockProfileUI.swift in Sources */,
 				8383DBA326EAEC43006C977D /* NewsDetailView.swift in Sources */,
 				83D9986226E47206008CF27B /* AcademicRow.swift in Sources */,
 				8360F07826F3D8B300B80900 /* HighlightedNewsView.swift in Sources */,
@@ -702,6 +789,7 @@
 		};
 		8385998926D866FE00E91884 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C8C391FCF95A5E7B164487 /* Pods-UnamUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -723,6 +811,7 @@
 		};
 		8385998A26D866FE00E91884 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACBF9AD513D7E5901A1965D5 /* Pods-UnamUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;

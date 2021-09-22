@@ -11,7 +11,12 @@ import UIKit
 
 enum Constant {
     
-    static var isDebugMode: Bool = true
+    static var testUI = "TEST_UI"
+    
+    static var isDebugMode: Bool {
+        let testMode = ProcessInfo.processInfo.environment.keys.contains(Constant.testUI)
+        return testMode
+    }
     
     static var isLoadingNewList: Bool = true
     
