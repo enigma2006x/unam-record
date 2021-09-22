@@ -19,6 +19,9 @@ The UNAM Mobile application contains the features listed below:
         - AcademicItem
     - [Classes](#classes)
         - UserDataViewModel
+- Profile:
+    - [SwiftUI](#swiftui-profile)
+    - [Memory Graph](#memory-graph)
 
 The UNAM Mobile is using the endpoints listed below:
 
@@ -82,12 +85,22 @@ The UNAM Mobile allows you to share your Academic Record using different vias li
     </tr>
 </table>
 
+## News View 
+
+The UNAM Mobile allows you to look at the latest UNAM news. 
+
+<table>
+    <tr>
+        <th width=340><img src="../main/NewsView1.png" ></th>
+        <th width=340><img src="../main/NewsView3.png" ></th>
+    </tr>
+</table>
+
 ## Unit Tests
 
 The UNAM Mobile contains Unit Tests for evaluate test cases.
 
 <img with=400 src="../main/UnitTests.png" >
-
 
 ## UITests
 
@@ -103,3 +116,16 @@ The UNAM Mobile contains UITests for evaluate test cases.
 ## Classes
 
 - [UserDataViewModel](Documentation/Reference/classes/UserDataViewModel.md)
+
+## SwiftUI Profile
+
+The SwiftUI profile of UNAM Mobile.
+
+<img with=400 src="../main/IntrumentsSwiftUI.png" >
+
+## Memory Graph
+
+The memory graph shows the memory regions of UNAM Mobile is using and the size of each region
+
+<img with=400 src="../main/memory1.png" >
+<img with=400 src="../main/memory2.png" >
